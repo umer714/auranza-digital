@@ -152,4 +152,65 @@ document.getElementById('year').textContent=new Date().getFullYear();
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 const enquiryForm=document.getElementById('contactForm');const enquiryMessage=document.getElementById('message');const messageCount=document.getElementById('messageCount');if(enquiryMessage&&messageCount){const updateCount=()=>{messageCount.textContent=enquiryMessage.value.length+' / 3000 characters';};enquiryMessage.addEventListener('input',updateCount);updateCount();}enquiryForm.addEventListener('submit',e=>{e.preventDefault();if(!enquiryForm.reportValidity())return;const v=id=>document.getElementById(id).value.trim();const subject=encodeURIComponent('AURANZA project enquiry — '+v('service'));const body=encodeURIComponent('Name: '+v('name')+'\nEmail: '+v('email')+'\nService: '+v('service')+'\n\nProject details:\n'+v('message'));document.getElementById('formStatus').textContent='Opening your email app. Review the draft and press Send; the enquiry is not sent automatically.';window.location.href='mailto:auranza.digital@gmail.com?subject='+subject+'&body='+body;});
 </script>
+
+<style id="auranza-cinematic-layer">
+/* Cinematic home experience: subtle orbital light, floating signal cards and a restrained particle field */
+#auranza-atmosphere{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.62}
+body>*:not(#auranza-atmosphere){position:relative;z-index:1}
+.hero{isolation:isolate;overflow:hidden}
+.hero:before{content:"";position:absolute;width:min(72vw,900px);height:min(72vw,900px);border:1px solid rgba(240,215,161,.07);border-radius:50%;right:-24%;top:-32%;pointer-events:none;z-index:-1;box-shadow:0 0 0 70px rgba(240,215,161,.018),0 0 0 150px rgba(130,104,185,.018)}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(90deg,rgba(9,9,13,.20),transparent 70%),radial-gradient(ellipse at 68% 48%,rgba(190,156,96,.055),transparent 38%)}
+.orb-wrap:before{content:"";position:absolute;width:360px;height:360px;border:1px solid rgba(240,215,161,.13);border-radius:50%;transform:rotate(-28deg) scaleY(.43);animation:az-orbit 24s linear infinite}
+.orb-wrap:after{content:"";position:absolute;width:410px;height:410px;border:1px dashed rgba(240,215,161,.11);border-radius:50%;transform:rotate(40deg) scaleY(.36);animation:az-orbit 38s linear infinite reverse}
+.orb{z-index:1}
+.orb-label{z-index:2;box-shadow:0 18px 60px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.05)}
+.hero-copy .eyebrow{padding:8px 12px;border:1px solid rgba(240,215,161,.18);background:rgba(240,215,161,.035);border-radius:2px}
+.hero h1{letter-spacing:-.065em;text-shadow:0 8px 55px rgba(0,0,0,.18)}
+.hero h1 em{background:linear-gradient(110deg,#fff0cc 4%,#e3c17f 48%,#b18b4e 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-note{padding-top:20px;border-top:1px solid rgba(240,215,161,.12);max-width:520px}
+.ticker{background:linear-gradient(90deg,rgba(240,215,161,.025),rgba(255,255,255,.008),rgba(240,215,161,.025))}
+.section-head h2{letter-spacing:-.06em}
+.service{background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.005))}
+.service .icon{display:grid;place-items:center;width:46px;height:46px;border:1px solid rgba(240,215,161,.17);background:rgba(240,215,161,.035);border-radius:50%}
+@keyframes az-orbit{to{transform:rotate(332deg) scaleY(.43)}}
+@media(max-width:850px){.hero:before{right:-55%;top:-10%}.orb-wrap:before{width:300px;height:300px}.orb-wrap:after{width:340px;height:340px}}
+@media(max-width:560px){.hero:before{width:120vw;height:120vw;right:-65%;top:18%}.orb-wrap:before{width:250px;height:250px}.orb-wrap:after{width:285px;height:285px}.hero-copy .eyebrow{font-size:.64rem;letter-spacing:.13em}.hero-note{font-size:.74rem}}
+@media(prefers-reduced-motion:reduce){.orb-wrap:before,.orb-wrap:after{animation:none!important}#auranza-atmosphere{display:none}}
+</style>
+<canvas id="auranza-atmosphere" aria-hidden="true"></canvas>
+<script id="auranza-atmosphere-engine">
+(()=> {
+ const canvas=document.getElementById('auranza-atmosphere');
+ if(!canvas) return;
+ const ctx=canvas.getContext('2d',{alpha:true});
+ if(!ctx) return;
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const coarse=window.matchMedia('(pointer: coarse)').matches;
+ let w=0,h=0,raf=0,particles=[];
+ const count=reduce?0:(coarse?28:54);
+ const resize=()=>{
+   const dpr=Math.min(window.devicePixelRatio||1,1.6);
+   w=window.innerWidth;h=window.innerHeight;
+   canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);
+   canvas.style.width=w+'px';canvas.style.height=h+'px';
+   ctx.setTransform(dpr,0,0,dpr,0,0);
+   particles=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.5+.35,vx:(Math.random()-.5)*.16,vy:(Math.random()-.5)*.14,a:Math.random()*.38+.08,phase:Math.random()*6.28}));
+ };
+ const draw=()=>{
+   ctx.clearRect(0,0,w,h);
+   particles.forEach(p=>{
+     p.x+=p.vx;p.y+=p.vy;p.phase+=.006;
+     if(p.x<-8)p.x=w+8;if(p.x>w+8)p.x=-8;
+     if(p.y<-8)p.y=h+8;if(p.y>h+8)p.y=-8;
+     ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+     ctx.fillStyle='rgba(240,215,161,'+(p.a*(.72+.28*Math.sin(p.phase)))+')';ctx.fill();
+   });
+   if(!reduce) raf=requestAnimationFrame(draw);
+ };
+ resize();
+ if(!reduce) draw();
+ window.addEventListener('resize',()=>{cancelAnimationFrame(raf);resize();if(!reduce)draw()},{passive:true});
+})();
+</script>
+
 </body></html>
