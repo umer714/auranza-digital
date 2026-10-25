@@ -255,8 +255,89 @@ body:after{opacity:.075;background-size:7px 7px}
 @media(max-width:560px){.hero{padding:58px 0 66px}.hero h1{font-size:clamp(4.1rem,17vw,6rem)!important;line-height:.8!important}.hero-copy>p{font-size:.96rem}.hero-actions{display:grid;grid-template-columns:1fr}.hero-actions .btn{width:100%}.hero-note{margin-top:30px}.studio-visual{min-height:430px}.visual-top{padding:22px 22px}.visual-main{padding:25px 22px 20px}.visual-headline{font-size:clamp(4rem,17vw,5.4rem)!important}.visual-stamp{right:16px;bottom:67px}.visual-caption{padding:15px 22px;font-size:.52rem}.ticker-track{min-width:0;display:flex;flex-wrap:wrap;gap:12px 18px;justify-content:flex-start;white-space:normal}.section{padding:75px 0}.section-head h2,.about-copy h2,.contact-info h2,.cta h2{font-size:clamp(3.1rem,14vw,4.4rem)!important}.service{grid-template-columns:52px 1fr 22px;padding:22px 3px;gap:10px}.service .num{font-size:.56rem}.service h3{font-size:1.7rem!important}.service p{font-size:.78rem}.manifesto{padding:28px;min-height:270px}.manifesto .big{font-size:clamp(2.8rem,12vw,4rem)!important}.work-grid{grid-template-columns:1fr}.work-card{min-height:285px}.work-card h3{font-size:2.6rem!important}.process{grid-template-columns:1fr 1fr;gap:22px}.step{padding-right:8px}.cta{padding:58px 0}.cta-inner{gap:24px}.cta .btn{width:100%}.contact-form{padding:22px}.footer-inner{gap:20px}}
 @media(prefers-reduced-motion:reduce){.studio-visual,.visual-stamp{animation:none!important}.service,.work-card{transition:none!important}}
 </style>
+
+<style id="auranza-cinematic-wallpaper-v2">
+/* AURANZA: cinematic live wallpaper + luxury agency art direction */
+:root{
+ --az-ink:#080807;--az-panel:#11100d;--az-gold:#e8c987;--az-gold-bright:#ffe9b5;
+ --az-muted:#bcb6a8;--az-border:rgba(232,201,135,.2);--az-glow:rgba(232,201,135,.13);
+}
+html{background:#080807!important}
+body{
+ background:#080807!important;
+ background-image:radial-gradient(ellipse at 76% 9%,rgba(190,146,68,.17),transparent 31%),
+ radial-gradient(ellipse at 8% 38%,rgba(125,93,42,.12),transparent 33%),
+ radial-gradient(ellipse at 55% 95%,rgba(232,201,135,.07),transparent 38%)!important;
+ background-size:150% 150%!important;animation:az-wallpaper-drift 34s ease-in-out infinite alternate!important;
+}
+@keyframes az-wallpaper-drift{0%{background-position:0% 0%}50%{background-position:75% 35%}100%{background-position:100% 80%}}
+body:before{
+ content:"";position:fixed!important;inset:-25%!important;z-index:0!important;pointer-events:none!important;
+ background:conic-gradient(from 210deg at 70% 28%,transparent 0deg,rgba(232,201,135,.035) 35deg,transparent 80deg,rgba(255,236,190,.045) 115deg,transparent 170deg,rgba(143,105,45,.045) 230deg,transparent 300deg);
+ filter:blur(45px);animation:az-light-orbit 48s linear infinite!important;
+}
+body:after{
+ content:"";position:fixed!important;inset:0!important;z-index:0!important;pointer-events:none!important;opacity:.22!important;
+ background-image:linear-gradient(rgba(232,201,135,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(232,201,135,.035) 1px,transparent 1px),radial-gradient(rgba(255,242,210,.2) .5px,transparent .7px)!important;
+ background-size:88px 88px,88px 88px,5px 5px!important;
+ mask-image:linear-gradient(to bottom,black,transparent 82%)!important;
+}
+@keyframes az-light-orbit{from{transform:rotate(0deg) scale(1)}to{transform:rotate(360deg) scale(1.06)}}
+body>*:not(#auranza-atmosphere):not(.auranza-live-wallpaper){position:relative;z-index:1}
+.auranza-live-wallpaper{position:fixed!important;inset:0!important;z-index:0!important;overflow:hidden;pointer-events:none;isolation:isolate}
+.auranza-live-wallpaper .az-light{
+ position:absolute;width:44vw;height:44vw;min-width:360px;min-height:360px;border-radius:50%;
+ filter:blur(80px);opacity:.13;mix-blend-mode:screen;
+ background:radial-gradient(circle,rgba(255,222,153,.8),rgba(159,111,42,.18) 35%,transparent 70%);
+ animation:az-light-float 22s ease-in-out infinite alternate;
+}
+.auranza-live-wallpaper .az-light.one{top:-20%;right:-8%}
+.auranza-live-wallpaper .az-light.two{bottom:-27%;left:-12%;width:55vw;height:55vw;opacity:.09;animation-delay:-9s;animation-duration:31s}
+.auranza-live-wallpaper .az-light.three{top:38%;left:43%;width:28vw;height:28vw;min-width:240px;min-height:240px;opacity:.055;animation-delay:-15s}
+@keyframes az-light-float{0%{transform:translate3d(-3%,2%,0) scale(.92)}50%{transform:translate3d(4%,-5%,0) scale(1.08)}100%{transform:translate3d(-2%,4%,0) scale(1)}}
+#auranza-atmosphere{z-index:0!important;opacity:.76!important;mix-blend-mode:screen}
+.topbar{background:rgba(8,8,7,.72)!important;border-bottom-color:rgba(232,201,135,.18)!important;box-shadow:0 12px 44px rgba(0,0,0,.28)!important}
+.logo{letter-spacing:.24em!important}
+.hero{min-height:min(850px,calc(100svh - 78px))!important;isolation:isolate}
+.hero:before{border-color:rgba(232,201,135,.12)!important;box-shadow:0 0 0 70px rgba(232,201,135,.025),0 0 0 150px rgba(232,201,135,.015)!important}
+.hero h1{font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:500!important;letter-spacing:-.045em!important;line-height:.83!important;font-size:clamp(5.2rem,10.2vw,10rem)!important}
+.hero h1 em{background:linear-gradient(115deg,#fff4d9 0%,#f1d69b 38%,#b98b43 78%,#f7e8c5 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+.hero-copy>p{max-width:520px;font-size:clamp(1rem,1.25vw,1.18rem)!important;color:#c5bfb2!important;line-height:1.9!important}
+.hero-copy .eyebrow{border-color:rgba(232,201,135,.26)!important;background:rgba(232,201,135,.045)!important;color:#f3dba7!important}
+.studio-visual{border-color:rgba(232,201,135,.28)!important;background:linear-gradient(145deg,rgba(25,23,18,.9),rgba(8,8,7,.94))!important;box-shadow:0 32px 100px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.07)!important}
+.visual-headline{font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:500!important;letter-spacing:-.045em!important}
+.visual-stamp{background:#e8c987!important;color:#17130b!important;box-shadow:0 18px 55px rgba(0,0,0,.35)!important}
+.visual-stamp b{color:#17130b!important}
+.visual-status i{background:#d9b66d!important;box-shadow:0 0 12px rgba(232,201,135,.65)!important}
+.btn.primary{background:linear-gradient(115deg,#f6e3b8,#d7b36b)!important;border-color:#f2dca8!important;color:#17130b!important;box-shadow:0 8px 35px rgba(232,201,135,.12)!important}
+.btn.primary:hover{background:linear-gradient(115deg,#fff0ca,#e6c783)!important;box-shadow:0 12px 45px rgba(232,201,135,.23)!important}
+.btn:not(.primary){background:rgba(255,255,255,.025)!important;border-color:rgba(232,201,135,.24)!important}
+.section-head h2,.about-copy h2,.contact-info h2,.cta h2{font-family:'Cormorant Garamond',Georgia,serif!important;font-weight:500!important;letter-spacing:-.035em!important}
+.section-head h2{font-size:clamp(3.5rem,6.3vw,6rem)!important;line-height:.92!important}
+.service{background:linear-gradient(145deg,rgba(24,22,17,.76),rgba(9,9,8,.7))!important;border-color:rgba(232,201,135,.16)!important}
+.service:hover{background:linear-gradient(145deg,rgba(55,43,23,.56),rgba(11,10,8,.85))!important;border-color:rgba(232,201,135,.45)!important}
+.service h3,.work-card h3,.step h3{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:1.9rem!important;font-weight:500!important;letter-spacing:-.02em!important}
+.service .icon{color:#f1d69b!important;border-color:rgba(232,201,135,.24)!important;background:rgba(232,201,135,.055)!important}
+.manifesto{background:linear-gradient(145deg,rgba(42,34,21,.92),rgba(12,11,9,.92))!important;border-color:rgba(232,201,135,.25)!important}
+.manifesto .big{font-family:'Cormorant Garamond',Georgia,serif!important;font-size:clamp(2.6rem,4.8vw,4.7rem)!important;font-weight:500!important;letter-spacing:-.035em!important}
+.work-card{background:linear-gradient(145deg,rgba(31,27,19,.87),rgba(9,9,8,.94))!important;border-color:rgba(232,201,135,.2)!important}
+.work-card:nth-child(2),.work-card:nth-child(3),.work-card:nth-child(4){background:linear-gradient(145deg,rgba(26,24,19,.88),rgba(9,9,8,.94))!important}
+.work-card:after{border-color:rgba(232,201,135,.28)!important;box-shadow:0 0 0 25px rgba(232,201,135,.03),0 0 0 50px rgba(232,201,135,.018)!important}
+.cta{background:linear-gradient(110deg,#d4b477,#e8d3a8 58%,#c4a365)!important;color:#16130d!important}
+.cta .eyebrow,.cta p,.cta h2,.cta h2 span{color:#211a0d!important}
+.cta .eyebrow:before{background:#211a0d!important}
+.contact-form{background:linear-gradient(145deg,rgba(25,23,18,.9),rgba(10,10,9,.9))!important;border-color:rgba(232,201,135,.2)!important;box-shadow:0 25px 75px rgba(0,0,0,.2)!important}
+.field input,.field textarea,.field select{background:rgba(7,7,6,.78)!important;border-color:rgba(232,201,135,.17)!important}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#e8c987!important;box-shadow:0 0 0 3px rgba(232,201,135,.1)!important}
+.footer{background:rgba(6,6,5,.82)!important;border-top-color:rgba(232,201,135,.16)!important}
+@media(max-width:850px){.hero{min-height:auto!important}.hero h1{font-size:clamp(5.1rem,14vw,8rem)!important}.studio-visual{max-width:600px}}
+@media(max-width:560px){.hero h1{font-size:clamp(4.4rem,18vw,6.6rem)!important;line-height:.83!important}.auranza-live-wallpaper .az-light{filter:blur(55px);opacity:.09}.section-head h2{font-size:clamp(3.2rem,14vw,4.5rem)!important}.service h3,.work-card h3,.step h3{font-size:1.75rem!important}}
+@media(prefers-reduced-motion:reduce){body,.auranza-live-wallpaper .az-light,body:before{animation:none!important}#auranza-atmosphere{display:none!important}}
+</style>
+
 </head>
 <body>
+<div class="auranza-live-wallpaper" aria-hidden="true"><span class="az-light one"></span><span class="az-light two"></span><span class="az-light three"></span></div>
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="topbar"><nav class="wrap"><a class="logo" href="#home" aria-label="AURANZA home">AURAN<span>Z</span>A</a><button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button><div class="navlinks" id="navLinks"><a href="services.html">Services</a><a href="about.html">About</a><a href="portfolio.html">Portfolio</a><a href="#process">Process</a><a class="btn" href="#contact">Let’s Talk <span class="arrow">↗</span></a></div></nav></header>
 <main id="main-content">
