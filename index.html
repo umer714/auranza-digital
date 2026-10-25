@@ -103,11 +103,6 @@ menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰'}));
 document.getElementById('year').textContent=new Date().getFullYear();
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const f=e.currentTarget;const name=f.name.value.trim(),email=f.email.value.trim(),service=f.service.value,message=f.message.value.trim();const subject=encodeURIComponent('AURANZA project enquiry — '+service);const body=encodeURIComponent('Name: '+name+'
-Email: '+email+'
-Service: '+service+'
-
-Project details:
-'+message);document.getElementById('formStatus').textContent='Your email app should open with the enquiry. Please review and send it there.';window.location.href='mailto:auranza.digital@gmail.com?subject='+subject+'&body='+body;});
+const enquiryForm=document.getElementById('contactForm');const enquiryMessage=document.getElementById('message');const messageCount=document.getElementById('messageCount');if(enquiryMessage&&messageCount){const updateCount=()=>{messageCount.textContent=enquiryMessage.value.length+' / 3000 characters';};enquiryMessage.addEventListener('input',updateCount);updateCount();}enquiryForm.addEventListener('submit',e=>{e.preventDefault();if(!enquiryForm.reportValidity())return;const v=id=>document.getElementById(id).value.trim();const subject=encodeURIComponent('AURANZA project enquiry — '+v('service'));const body=encodeURIComponent('Name: '+v('name')+'\nEmail: '+v('email')+'\nService: '+v('service')+'\n\nProject details:\n'+v('message'));document.getElementById('formStatus').textContent='Opening your email app. Review the draft and press Send; the enquiry is not sent automatically.';window.location.href='mailto:auranza.digital@gmail.com?subject='+subject+'&body='+body;});
 </script>
 </body></html>
