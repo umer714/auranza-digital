@@ -2,10 +2,32 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n<meta name="apple-mobile-web-app-capable" content="yes">\n<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">\n<meta name="apple-mobile-web-app-title" content="AURANZA">
-<meta name="format-detection" content="telephone=no">\n<meta name="theme-color" content="#09090b">\n<link rel="canonical" href="https://auranza.vercel.app/">\n<link rel="manifest" href="/site.webmanifest">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AURANZA">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#09090b">
+<link rel="canonical" href="https://auranza.vercel.app/">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="description" content="AURANZA helps ambitious brands grow through strategic digital marketing, web design, SEO, and creative experiences. Think Beyond. Grow Beyond.">
 <meta name="robots" content="index,follow">
+<meta property="og:url" content="https://auranza.vercel.app/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AURANZA — Think Beyond. Grow Beyond.">
+<meta name="twitter:description" content="Digital strategy, web design, SEO and creative experiences for ambitious brands.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "AURANZA",
+  "url": "https://auranza.vercel.app/",
+  "email": "auranza.digital@gmail.com",
+  "description": "Digital strategy, website design, SEO, social media and creative services.",
+  "areaServed": "Worldwide",
+  "sameAs": []
+}
+</script>
 <meta property="og:title" content="AURANZA — Think Beyond. Grow Beyond.">
 <meta property="og:description" content="Premium digital strategy, creative, and web experiences built for ambitious brands.">
 <meta property="og:type" content="website">
@@ -36,7 +58,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media (max-width:480px){.wrap,.container,.shell{width:calc(100% - 28px)}nav{align-items:flex-start}.logo{font-size:19px}nav div{gap:10px 14px}.grid,.cards,.services-grid,.work-grid,.feature-grid,.principles{grid-template-columns:minmax(0,1fr)!important}.card{padding:22px!important}.panel,.form,.info{padding:20px!important}h1{font-size:clamp(34px,10vw,46px);line-height:1.08}h2{font-size:clamp(23px,7vw,30px)}.lead,.intro{font-size:17px}.btn,button[type=submit]{min-height:44px;display:inline-flex;align-items:center;justify-content:center;max-width:100%}.foot .wrap{align-items:flex-start}.field input,.field select,.field textarea{font-size:16px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 @media (hover:none){a:hover,button:hover{filter:none}}
-</style>\n</head>
+</style>
+</head>
 <body>
 <header class="topbar"><nav class="wrap"><a class="logo" href="#home" aria-label="AURANZA home">AURAN<span>Z</span>A</a><button class="menu" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button><div class="navlinks" id="navLinks"><a href="services.html">Services</a><a href="about.html">About</a><a href="#work">Selected Work</a><a href="#process">Process</a><a class="btn" href="#contact">Let’s Talk <span class="arrow">↗</span></a></div></nav></header>
 <main id="home">
@@ -69,6 +92,11 @@ menuBtn.addEventListener('click',()=>{const open=navLinks.classList.toggle('open
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');menuBtn.textContent='☰'}));
 document.getElementById('year').textContent=new Date().getFullYear();
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const f=e.currentTarget;const name=f.name.value.trim(),email=f.email.value.trim(),service=f.service.value,message=f.message.value.trim();const subject=encodeURIComponent('AURANZA project enquiry — '+service);const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nService: '+service+'\n\nProject details:\n'+message);document.getElementById('formStatus').textContent='Your email app should open with the enquiry. Please review and send it there.';window.location.href='mailto:auranza.digital@gmail.com?subject='+subject+'&body='+body;});
+document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();const f=e.currentTarget;const name=f.name.value.trim(),email=f.email.value.trim(),service=f.service.value,message=f.message.value.trim();const subject=encodeURIComponent('AURANZA project enquiry — '+service);const body=encodeURIComponent('Name: '+name+'
+Email: '+email+'
+Service: '+service+'
+
+Project details:
+'+message);document.getElementById('formStatus').textContent='Your email app should open with the enquiry. Please review and send it there.';window.location.href='mailto:auranza.digital@gmail.com?subject='+subject+'&body='+body;});
 </script>
 </body></html>
