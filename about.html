@@ -45,7 +45,30 @@ header nav{position:relative;min-height:70px;height:auto;padding:12px 0;flex-wra
 .nav-links.open{display:flex!important}
 .nav-links a{display:block!important;padding:10px 4px;font-size:15px!important}
 }
-</style></head><body>
+</style><style id="auranza-ultra-premium">
+/* AURANZA ULTRA PREMIUM — shared visual system */
+:root{--az-gold:#f0d7a1;--az-gold-soft:#c9a96e;--az-ink:#09090d;--az-panel:rgba(20,20,26,.78);--az-border:rgba(240,215,161,.19);--az-muted:#b5b1aa;--az-glow:rgba(186,150,255,.12)}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background-color:var(--az-ink)!important;background-image:radial-gradient(ellipse at 12% 4%,rgba(113,76,191,.19),transparent 32%),radial-gradient(ellipse at 88% 16%,rgba(240,215,161,.10),transparent 29%),radial-gradient(ellipse at 55% 82%,rgba(65,105,180,.09),transparent 36%)!important;background-size:140% 140%;animation:az-ambient-drift 28s ease-in-out infinite alternate}
+@keyframes az-ambient-drift{0%{background-position:0% 0%}100%{background-position:100% 70%}}
+::selection{background:rgba(240,215,161,.85);color:#121016}
+header{background:rgba(9,9,13,.78)!important;border-bottom:1px solid rgba(240,215,161,.14)!important;backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%)}
+a{transition:color .22s ease,opacity .22s ease,transform .22s ease}
+button,.btn{transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease}
+.btn, .btn.primary{border:1px solid rgba(255,241,211,.36);border-radius:4px;box-shadow:0 8px 28px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.18);letter-spacing:.015em}
+.btn:hover,.btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(0,0,0,.34),0 0 28px rgba(240,215,161,.12)}
+.card,.panel,.work-card,.step,.contact-form,.form,.info,.notice,.cta,.process>*,.principles>div{border-color:var(--az-border)!important;box-shadow:0 16px 44px rgba(0,0,0,.16);transition:transform .28s ease,border-color .28s ease,background .28s ease,box-shadow .28s ease}
+.card:hover,.panel:hover,.work-card:hover,.step:hover,.process>*:hover{border-color:rgba(240,215,161,.42)!important;box-shadow:0 22px 55px rgba(0,0,0,.26),0 0 26px rgba(240,215,161,.045);transform:translateY(-3px)}
+h1,h2,h3{text-wrap:balance}
+p{ text-wrap:pretty}
+.eyebrow,.tag,.work-tag,.stepnum{letter-spacing:.17em}
+input,select,textarea{border-radius:6px!important;border-color:rgba(240,215,161,.20)!important;background:rgba(8,8,12,.72)!important}
+input:focus,select:focus,textarea:focus{border-color:var(--az-gold)!important;box-shadow:0 0 0 3px rgba(240,215,161,.10)}
+footer,.footer,.foot{border-color:rgba(240,215,161,.15)!important}
+@media(max-width:700px){body{background-size:180% 180%}.card:hover,.panel:hover,.work-card:hover,.step:hover,.process>*:hover{transform:none}.btn,.btn.primary{min-height:46px}}
+@media(prefers-reduced-motion:reduce){body{animation:none!important;background-position:center!important}*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+</head><body>
 <a class="skip-link" href="#main-content">Skip to main content</a><header><nav class="wrap"><a class="logo" href="index.html">AURAN<span>Z</span>A</a><button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-controls="site-navigation" aria-expanded="false">☰</button><div class="nav-links" id="site-navigation" aria-label="Site navigation"><a href="index.html">Home</a><a href="services.html">Services</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div></nav></header><main id="main-content" class="wrap"><span class="eyebrow">The AURANZA mindset</span><h1>Think beyond the obvious.<br><em>Build with intention.</em></h1><p class="lead">AURANZA is an independent digital growth studio built around a simple belief: meaningful progress happens when strategy and creativity work together.</p><div class="columns"><section class="panel"><h2>Our approach</h2><p>We start by understanding the business challenge, the people you want to reach and the outcome you are aiming for. Then we focus on the work that makes the most sense—not activity for its own sake.</p><p>Clear communication, thoughtful design and practical execution shape every stage of the process.</p></section><section class="panel"><h2>What we value</h2><ul><li>Clarity over unnecessary complexity</li><li>Useful creative work over empty buzzwords</li><li>Honest communication and realistic expectations</li><li>Continuous learning and thoughtful improvement</li></ul></section></div><div class="principles"><div><strong>Strategy first</strong><span>Know the purpose before the pixels.</span></div><div><strong>People matter</strong><span>Design for real needs and decisions.</span></div><div><strong>Progress with intent</strong><span>Measure what matters and improve.</span></div></div><section class="cta"><span class="eyebrow">Have a goal in mind?</span><h2>Let’s find the right next step.</h2><a class="btn" href="contact.html">Contact AURANZA ↗</a></section></main><footer class="foot"><div class="wrap"><span>© 2026 AURANZA</span><span><a href="index.html">Home</a> · <a href="services.html">Services</a> · <a href="privacy.html">Privacy</a></span></div></footer><script>
 (()=>{const button=document.querySelector('.nav-toggle');const links=document.querySelector('.nav-links');if(!button||!links)return;
 const close=()=>{links.classList.remove('open');button.setAttribute('aria-expanded','false');button.textContent='☰';button.setAttribute('aria-label','Open navigation menu')};
