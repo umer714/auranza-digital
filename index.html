@@ -433,4 +433,64 @@ body>*:not(#auranza-atmosphere){position:relative;z-index:1}
 })();
 </script>
 
+
+<!-- AURANZA PREMIUM EXPERIENCE PATCH -->
+<style id="auranza-premium-refinement">
+:root{color-scheme:dark;scroll-behavior:smooth}
+html{scroll-padding-top:90px}
+body{overflow-x:hidden;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(220,190,130,.32);color:#fff}
+:focus-visible{outline:2px solid #e7cc91;outline-offset:4px;border-radius:4px}
+a,button,input,textarea,select{ -webkit-tap-highlight-color:transparent}
+a,button{transition:color .25s ease,border-color .25s ease,background-color .25s ease,box-shadow .25s ease,transform .25s ease}
+button,[role="button"],input[type="submit"]{cursor:pointer}
+img{max-width:100%;height:auto}
+input,textarea,select{max-width:100%;font:inherit}
+textarea{resize:vertical}
+#auranza-atmosphere{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.68}
+body>*:not(#auranza-atmosphere){position:relative}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 12% 8%,rgba(190,155,91,.075),transparent 38%),radial-gradient(ellipse at 88% 48%,rgba(190,155,91,.045),transparent 42%);mix-blend-mode:screen}
+a:hover{color:#ead39d}
+button:hover,[role="button"]:hover,input[type="submit"]:hover{transform:translateY(-1px)}
+:where(.btn,.button,.cta-button,a.button,a.btn){position:relative;isolation:isolate;overflow:hidden}
+:where(.btn,.button,.cta-button,a.button,a.btn):after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.12) 48%,transparent 72%);transform:translateX(-125%);transition:transform .7s ease}
+:where(.btn,.button,.cta-button,a.button,a.btn):hover:after{transform:translateX(125%)}
+:where(section){scroll-margin-top:90px}
+:where(input,textarea,select){transition:border-color .2s ease,box-shadow .2s ease,background .2s ease}
+:where(input,textarea,select):focus{border-color:rgba(225,196,133,.8)!important;box-shadow:0 0 0 3px rgba(225,196,133,.12);outline:none}
+@media(max-width:720px){
+ html{scroll-padding-top:72px}
+ body{font-size:15px}
+ :where(section){scroll-margin-top:72px}
+ :where(input,textarea,select){font-size:16px!important}
+ #auranza-atmosphere{opacity:.42}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+ #auranza-atmosphere{display:none!important}
+}
+</style>
+<script>
+/* Small accessibility and mobile-quality safeguards; no external dependencies. */
+(function(){
+ const form=document.querySelector('form');
+ if(form){
+   form.querySelectorAll('input,textarea,select').forEach(function(el){
+     if(!el.getAttribute('autocomplete') && el.type!=='hidden' && el.type!=='submit'){
+       if(/email/i.test(el.name+' '+el.id+' '+el.placeholder)) el.setAttribute('autocomplete','email');
+       else if(/name/i.test(el.name+' '+el.id+' '+el.placeholder)) el.setAttribute('autocomplete','name');
+       else if(/phone|tel/i.test(el.name+' '+el.id+' '+el.placeholder)) el.setAttribute('autocomplete','tel');
+     }
+   });
+ }
+ document.querySelectorAll('a[href^="#"]').forEach(function(link){
+   link.addEventListener('click',function(){
+     const target=document.querySelector(link.getAttribute('href'));
+     if(target && target.id) target.setAttribute('tabindex','-1');
+   });
+ });
+})();
+</script>
+
 </body></html>
