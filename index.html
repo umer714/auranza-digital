@@ -548,6 +548,40 @@ button:hover,[role="button"]:hover,input[type="submit"]:hover{transform:translat
 @media(max-width:760px){.az-faq-grid{grid-template-columns:1fr}.az-faq-mark{margin-bottom:18px}.az-faq-list summary{padding-top:18px;padding-bottom:18px}}
 </style>
 
+<!-- Header stacking correction: keep the expanded mobile menu above hero and page content -->
+<style id="az-mobile-menu-layering-fix">
+/* Later cinematic styles set every direct child to z-index:1, overriding the sticky header's earlier layer. */
+header.topbar{
+  position:sticky!important;
+  top:0!important;
+  z-index:5000!important;
+  isolation:isolate;
+}
+header.topbar nav{
+  position:relative!important;
+  z-index:5001!important;
+}
+header.topbar .navlinks.open{
+  z-index:5002!important;
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+}
+@media(max-width:850px){
+  header.topbar .navlinks{
+    position:absolute!important;
+    top:100%!important;
+    left:0!important;
+    right:0!important;
+    max-height:calc(100dvh - 76px);
+    overflow-y:auto!important;
+    overscroll-behavior:contain;
+  }
+  header.topbar .navlinks.open{display:flex!important}
+  header.topbar .menu{position:relative;z-index:5003!important}
+}
+</style>
+
 <!-- Final cross-device fixes: tablet navigation, compact phone typography, and menu keyboard support -->
 <style id="az-final-responsive-fixes">
 @media (max-width:850px){
