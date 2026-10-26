@@ -887,6 +887,54 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .auranza-live-wallpaper .az-light.two{background:#666A73!important;opacity:.07!important}
 .auranza-live-wallpaper .az-light.three{background:#6B5A46!important;opacity:.05!important}
 @media(prefers-reduced-motion:reduce){.auranza-live-wallpaper *{animation:none!important;transition:none!important}}
+
+/* Editorial polish pass: quieter surfaces, deliberate spacing, and tactile interaction. */
+:root{--az-bronze:#A8875B;--az-bronze-soft:rgba(168,135,91,.16)}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{background-color:#0B0B0D}
+.hero,.section,.cta{isolation:isolate}
+.hero{position:relative}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 76% 18%,rgba(168,135,91,.075),transparent 36%),linear-gradient(180deg,rgba(255,255,255,.012),transparent 35%)}
+.section{position:relative}
+.section:not(#about):before{content:"";position:absolute;top:0;left:max(24px,calc((100% - 1160px)/2));right:max(24px,calc((100% - 1160px)/2));height:1px;background:linear-gradient(90deg,transparent,rgba(244,240,232,.12),rgba(168,135,91,.2),transparent);pointer-events:none}
+.service,.work-card,.step,.faq-item{
+ border:1px solid rgba(244,240,232,.095)!important;
+ background:linear-gradient(145deg,rgba(255,255,255,.026),rgba(255,255,255,.008) 58%),#141418!important;
+ box-shadow:0 12px 36px rgba(0,0,0,.12);
+ transition:transform .28s ease,border-color .28s ease,background .28s ease,box-shadow .28s ease!important;
+}
+.service:hover,.work-card:hover,.step:hover,.faq-item:hover{
+ transform:translateY(-4px);
+ border-color:rgba(168,135,91,.38)!important;
+ background:linear-gradient(145deg,rgba(168,135,91,.065),rgba(255,255,255,.008) 62%),#151519!important;
+ box-shadow:0 20px 48px rgba(0,0,0,.22);
+}
+.service .icon{background:rgba(168,135,91,.075)!important;color:#B99A70!important}
+.service h3,.work-card h3,.step h3{letter-spacing:-.025em}
+.service p,.work-card p,.step p{color:#A4A3AA}
+.work-tag{letter-spacing:.12em;text-transform:uppercase}
+.stepnum{background:rgba(168,135,91,.08)!important;color:#B99A70!important}
+.btn,.btn.primary,.navlinks .btn,button.btn{border-radius:3px!important;letter-spacing:.035em;transition:background .22s ease,border-color .22s ease,transform .22s ease!important}
+.btn:hover,.btn.primary:hover,.navlinks .btn:hover,button.btn:hover{transform:translateY(-1px)}
+.navlinks a:not(.btn){transition:color .2s ease}
+.navlinks a:not(.btn):hover{color:#B99A70!important}
+#about{background:#F4F0E8!important;color:#19191E!important}
+#about .about-copy p,#about .manifesto{color:#4C4B4A}
+#about .eyebrow{color:#80613A!important}
+#about .about-copy h2,#about .manifesto .big{color:#19191E}
+#about .about-copy h2 span,#about .manifesto .big span{color:#80613A!important}
+#about .about-copy a{color:#80613A}
+.cta{border-top:1px solid rgba(168,135,91,.18);border-bottom:1px solid rgba(168,135,91,.18)}
+footer{border-top:1px solid rgba(244,240,232,.10)}
+@media(max-width:760px){
+ .section:not(#about):before{left:20px;right:20px}
+ .service:hover,.work-card:hover,.step:hover,.faq-item:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .service,.work-card,.step,.faq-item,.btn,.btn.primary{transition:none!important}
+ .service:hover,.work-card:hover,.step:hover,.faq-item:hover,.btn:hover{transform:none}
+}
 </style>
 
 </head>
