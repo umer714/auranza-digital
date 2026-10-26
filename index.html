@@ -935,6 +935,41 @@ footer{border-top:1px solid rgba(244,240,232,.10)}
  .service,.work-card,.step,.faq-item,.btn,.btn.primary{transition:none!important}
  .service:hover,.work-card:hover,.step:hover,.faq-item:hover,.btn:hover{transform:none}
 }
+
+/* Dark bronze direction: remove white/ivory surfaces and white-heavy controls. */
+:root{
+ --bg:#0B0B0D!important;--panel:#19191E!important;--panel2:#222229!important;
+ --text:#D6D0C5!important;--muted:#92929B!important;
+ --gold:#A8875B!important;--gold2:#A8875B!important;--gold-light:#B99A70!important;
+ --az-lime:#A8875B!important;--line:rgba(168,135,91,.20)!important;
+ color-scheme:dark;
+}
+html,body{background:#0B0B0D!important;color:#D6D0C5!important}
+body{--text:#D6D0C5!important}
+header,.header,.nav,.navbar,.mobile-menu,.menu-panel{background:rgba(11,11,13,.94)!important}
+.btn,.btn.primary,.navlinks .btn,button.btn{
+ background:#A8875B!important;border-color:#A8875B!important;color:#111113!important;
+}
+.btn:hover,.btn.primary:hover,.navlinks .btn:hover,button.btn:hover{
+ background:#B99A70!important;border-color:#B99A70!important;color:#111113!important;
+}
+#about{
+ background:#17171B!important;color:#D6D0C5!important;
+}
+#about .about-copy h2,#about .manifesto .big{color:#D6D0C5!important}
+#about .about-copy p,#about .manifesto{color:#AAA7A0!important}
+#about .about-copy h2 span,#about .manifesto .big span{color:#A8875B!important}
+#about .eyebrow,#about .about-copy a{color:#B99A70!important}
+#about:before{background:linear-gradient(90deg,transparent,rgba(168,135,91,.22),transparent)!important}
+input,textarea,select,.field input,.field textarea,.field select{
+ background:#141418!important;color:#D6D0C5!important;border-color:rgba(168,135,91,.24)!important;
+}
+input::placeholder,textarea::placeholder{color:#777680!important}
+.service,.work-card,.step,.faq-item{
+ background:linear-gradient(145deg,rgba(168,135,91,.045),rgba(255,255,255,.004) 58%),#141418!important;
+}
+img,svg{color-scheme:dark}
+::selection{background:#A8875B!important;color:#111113!important}
 </style>
 
 </head>
