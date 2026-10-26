@@ -119,6 +119,31 @@ input,textarea,select,.field input,.field textarea,.field select{
 ::selection{background:#A8875B!important;color:#101012!important}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
+
+/* HARD FIX: eliminate every legacy white/ivory surface, including older and inline rules */
+html,body{background:#0B0B0D!important;color:#D6D0C5!important}
+body *{background-color:transparent!important;background-image:none!important}
+body,main,.hero,.section,#home,#services,#about,#work,#process,#contact,.cta,
+header,.topbar,footer,.wrap,.hero-grid,.hero-copy,.contact-info,.contact-form,
+.about-copy,.manifesto,.az-flagship-hero,.az-flagship-visual{
+ background-color:#0B0B0D!important;color:#D6D0C5;
+}
+#about,.about,.about-section,.manifesto,.about-panel{background-color:#151519!important;color:#D6D0C5!important}
+.service,.work-card,.step,.faq-item,.card,.panel,.feature-card,.portfolio-card,
+.az-art-core,.az-art-ring,.az-art-cross{
+ background-color:#151519!important;color:#D6D0C5!important;border-color:rgba(168,135,91,.24)!important;
+}
+input,textarea,select,.field input,.field textarea,.field select{
+ background-color:#141418!important;color:#D6D0C5!important;border-color:rgba(168,135,91,.28)!important;
+}
+.btn,.btn.primary,.navlinks .btn,button,.button,.button-primary{
+ background-color:#A8875B!important;background-image:none!important;color:#101012!important;border-color:#A8875B!important;
+}
+.btn:hover,.btn.primary:hover,button:hover,.button:hover,.button-primary:hover{
+ background-color:#B99A70!important;color:#101012!important;
+}
+.auranza-live-wallpaper,.az-hero-orbit,#auranza-atmosphere{background:transparent!important;background-color:transparent!important}
+
 </style>
 <style>
 /* Cross-device responsive quality layer: phones, tablets, laptops and desktops */
