@@ -1244,4 +1244,31 @@ const enquiryForm=document.getElementById('contactForm');const enquiryMessage=do
 
 
 
+
+<style id="auranza-hero-actions-premium">
+/* Refined hero actions: compact, editorial, premium */
+.az-flagship-hero .hero-actions{gap:11px;margin-top:27px;align-items:center}
+.az-flagship-hero .hero-actions .btn{
+  min-height:44px;padding:11px 16px;gap:10px;border-radius:2px;
+  font-size:.79rem;font-weight:600;letter-spacing:.015em;
+  box-shadow:none;transform:none;transition:background .22s ease,border-color .22s ease,color .22s ease;
+}
+.az-flagship-hero .hero-actions .btn.primary{
+  background:linear-gradient(135deg,#d6bd8c,#b99a70);border-color:#b99a70;color:#17130c;
+}
+.az-flagship-hero .hero-actions .btn:not(.primary){
+  background:rgba(255,255,255,.018);border-color:rgba(185,154,112,.42);color:#c9bda9;
+}
+.az-flagship-hero .hero-actions .btn .arrow{font-size:.95rem;opacity:.82;transition:transform .22s ease}
+.az-flagship-hero .hero-actions .btn:hover{transform:translateY(-1px);box-shadow:0 7px 22px rgba(0,0,0,.18)}
+.az-flagship-hero .hero-actions .btn.primary:hover{background:#e2c99a;border-color:#e2c99a;color:#111}
+.az-flagship-hero .hero-actions .btn:not(.primary):hover{background:rgba(185,154,112,.09);border-color:#b99a70;color:#e0cba8}
+.az-flagship-hero .hero-actions .btn:focus-visible{outline:2px solid #c8aa7b;outline-offset:4px}
+@media(max-width:560px){
+ .az-flagship-hero .hero-actions{gap:9px;margin-top:23px}
+ .az-flagship-hero .hero-actions .btn{min-height:42px;padding:10px 13px;font-size:.75rem;gap:8px}
+}
+@media(prefers-reduced-motion:reduce){.az-flagship-hero .hero-actions .btn,.az-flagship-hero .hero-actions .btn .arrow{transition:none}}
+</style>
+
 </body></html>
