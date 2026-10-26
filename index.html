@@ -548,6 +548,39 @@ button:hover,[role="button"]:hover,input[type="submit"]:hover{transform:translat
 @media(max-width:760px){.az-faq-grid{grid-template-columns:1fr}.az-faq-mark{margin-bottom:18px}.az-faq-list summary{padding-top:18px;padding-bottom:18px}}
 </style>
 
+<!-- Brand visibility fix: prevent the AURANZA wordmark being clipped or flex-shrunk on narrow screens -->
+<style id="az-wordmark-visibility-fix">
+header.topbar nav{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  flex-wrap:nowrap!important;
+  min-width:0;
+}
+header.topbar .logo{
+  display:inline-flex!important;
+  align-items:center;
+  flex:0 0 auto!important;
+  width:max-content!important;
+  min-width:max-content!important;
+  max-width:none!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-indent:0!important;
+  clip-path:none!important;
+  transform:none;
+  letter-spacing:.16em!important;
+}
+header.topbar .menu{
+  flex:0 0 auto!important;
+  margin-left:auto;
+}
+@media(max-width:850px){
+  header.topbar nav{gap:12px!important}
+  header.topbar .logo{font-size:clamp(16px,4.5vw,21px)!important;letter-spacing:.12em!important}
+}
+</style>
+
 <!-- Header stacking correction: keep the expanded mobile menu above hero and page content -->
 <style id="az-mobile-menu-layering-fix">
 /* Later cinematic styles set every direct child to z-index:1, overriding the sticky header's earlier layer. */
