@@ -845,6 +845,54 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.auranza-live-wallpaper{display:none!important}.btn,button.btn{transition:none!important}}
 </style>
 
+
+<style id="az-no-green-premium-finish">
+/* Remove the lime palette entirely from the visible experience. */
+:root{
+ --bg:#0B0B0D!important;--panel:#19191E!important;--panel2:#222229!important;
+ --text:#F4F0E8!important;--muted:#92929B!important;
+ --gold:#BDB6A8!important;--gold2:#BDB6A8!important;--gold-light:#BDB6A8!important;
+ --az-lime:#BDB6A8!important;--line:rgba(244,240,232,.12)!important;
+}
+.logo span,.eyebrow,.eyebrow:before,.num,.work-tag,.az-rail-label,.az-rail-note,
+.service .num,.service .icon,.work-card .work-tag,.step .stepnum,
+.contact-detail small,.contact-detail a:hover,#about .manifesto .eyebrow,
+#about .manifesto .eyebrow:before,#about .manifesto .big span{
+ color:#BDB6A8!important;background-color:transparent;
+}
+.eyebrow:before{background:#BDB6A8!important}
+.btn,.btn.primary,.navlinks .btn,button.btn{
+ background:#F4F0E8!important;border-color:#F4F0E8!important;color:#0B0B0D!important;
+ box-shadow:none!important;
+}
+.btn:hover,.btn.primary:hover,.navlinks .btn:hover,button.btn:hover{
+ background:#D8D2C5!important;border-color:#D8D2C5!important;color:#0B0B0D!important;
+}
+.hero h1 em,.az-flagship-hero h1 em,.az-flagship-visual .visual-headline em,
+.section-head h2 span,.section-head h2 em,.section h2 span,.section h2 em,
+.contact-info h2 span,#about .about-copy h2 span{
+ color:#BDB6A8!important;
+}
+.az-art-ring,.az-art-cross,.az-art-core,.service .icon,.step .stepnum{
+ border-color:rgba(189,182,168,.24)!important;
+}
+.az-art-core span{color:#BDB6A8!important}
+.service:before{background:linear-gradient(115deg,rgba(244,240,232,.025),transparent 60%)!important}
+.work-card:after{border-color:rgba(244,240,232,.12)!important}
+.cta{background:linear-gradient(110deg,#19191E,#0B0B0D 72%)!important}
+.field input:focus,.field textarea:focus,.field select:focus{
+ border-color:rgba(189,182,168,.65)!important;outline-color:rgba(189,182,168,.14)!important;
+}
+::selection{background:#D8D2C5!important;color:#0B0B0D!important}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+ outline-color:#BDB6A8!important;
+}
+.auranza-live-wallpaper .az-light.one{background:#8C877B!important;opacity:.06!important}
+.auranza-live-wallpaper .az-light.two{background:#666A73!important;opacity:.07!important}
+.auranza-live-wallpaper .az-light.three{background:#817A6D!important;opacity:.05!important}
+@media(prefers-reduced-motion:reduce){.auranza-live-wallpaper{display:none!important}}
+</style>
+
 </head>
 <body>
 <div class="auranza-live-wallpaper" aria-hidden="true"><span class="az-light one"></span><span class="az-light two"></span><span class="az-light three"></span></div>
