@@ -192,18 +192,22 @@ input,textarea,select{background:#141418!important;color:#D6D0C5!important;borde
 h1 em,h2 em,.eyebrow,.logo span,.accent,.gold,.highlight{color:#B99A70!important}
 ::selection{background:#A8875B!important;color:#101012!important}
 </style>
+
 <style id="auranza-absolute-final-dark-fix">
-/* Final cascade guard: must remain the last stylesheet in the document head */
-:root{--bg:#0B0B0D!important;--panel:#151519!important;--panel2:#202025!important;--text:#D6D0C5!important;--muted:#96939A!important;--gold:#A8875B!important;--gold2:#B99A70!important;--line:rgba(168,135,91,.24)!important}
+/* Typography correction: white body copy was not the background issue. */
+:root{--bg:#0B0B0D!important;--panel:#151519!important;--panel2:#202025!important;--text:#D6D0C5!important;--muted:#A7A19A!important;--gold:#A8875B!important;--gold2:#B99A70!important;--line:rgba(168,135,91,.24)!important}
 html,body{background:#0B0B0D!important;background-image:none!important;color:#D6D0C5!important}
 body:before,body:after{background-image:none!important}
 body,body main,body header,body footer,body nav,body section,body article,body aside,body .hero,body .section,body .topbar,body .wrap,body .content,body .page,body .page-hero,body .about,body .about-section,body .contact-section,body .privacy-content,body .cta,body .cta-inner,body .footer-inner{background-color:#0B0B0D!important;background-image:none!important;color:#D6D0C5!important}
+body p,body .note,body .muted,body .subtitle,body .description,body .section-head p,body .hero p,body .contact-info p,body .step p,body .service p,body .work-card p,body .faq-item p,body .az-faq-list p,body .footer p{color:#A7A19A!important}
+body h1,body h2,body h3,body h4,body h5,body h6,body label,body small,body li,body summary,body .navlinks a,body .contact-detail span,body .contact-detail a{color:#D6D0C5!important}
 body .service,body .work-card,body .step,body .faq-item,body .card,body .panel,body .feature-card,body .portfolio-card,body .contact-card,body .manifesto,body .about-panel,body .az-faq-intro,body .az-faq-list,body details{background-color:#151519!important;background-image:none!important;color:#D6D0C5!important;border-color:rgba(168,135,91,.24)!important}
 body input,body textarea,body select{background-color:#141418!important;background-image:none!important;color:#D6D0C5!important;border-color:rgba(168,135,91,.28)!important}
+body input::placeholder,body textarea::placeholder{color:#8D8780!important;opacity:1!important}
 body .btn,body .btn.primary,body button,body .button,body .button-primary{background-color:#A8875B!important;background-image:none!important;color:#101012!important;border-color:#A8875B!important}
 body .btn:hover,body button:hover,body .button:hover{background-color:#B99A70!important;color:#101012!important}
-body h1,body h2,body h3,body p,body label,body small,body li,body summary{color:inherit}
 body h1 em,body h2 em,body .eyebrow,body .logo span,body .accent,body .gold,body .highlight{color:#B99A70!important}
+body a:not(.btn):hover{color:#B99A70!important}
 #auranza-atmosphere,canvas#auranza-atmosphere{background:transparent!important;background-color:transparent!important}
 </style>
 </head><body>
