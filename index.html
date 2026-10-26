@@ -555,6 +555,93 @@ header.topbar .navlinks .btn{padding:12px 18px}
 @media(prefers-reduced-motion:reduce){.studio-visual:after{animation:none}}
 </style>
 
+<style id="az-coherent-luxury-system">
+/* AURANZA design system — intentional palette, typography, spacing and contrast */
+:root{
+ --bg:#0B0B0D;--panel:#19191E;--panel2:#222229;--text:#F4F0E8;--muted:#92929B;
+ --gold:#C7F36B;--gold2:#C7F36B;--gold-light:#C7F36B;--line:rgba(244,240,232,.13);
+ --max:1220px;--az-ivory:#F4F0E8;--az-graphite:#19191E;--az-lime:#C7F36B;--az-muted:#92929B;
+ --az-space-section:clamp(88px,8.5vw,120px);--az-space-card:clamp(24px,2.5vw,32px)
+}
+html{scroll-padding-top:92px}
+body{background:#0B0B0D;color:#F4F0E8;font-family:'DM Sans',sans-serif}
+h1,h2,h3{font-family:Manrope,sans-serif}
+.wrap{width:min(1220px,calc(100% - 112px))}
+p{color:#92929B;line-height:1.72}
+.eyebrow,.service .num,.work-card .work-tag,.az-rail-label,.az-rail-note{letter-spacing:.14em}
+.eyebrow{color:#C7F36B}
+.eyebrow:before{background:#C7F36B}
+.btn{min-height:48px;padding:12px 18px;font-weight:600;letter-spacing:.005em}
+.btn.primary{background:#C7F36B;border-color:#C7F36B;color:#10120b}
+.btn.primary:hover{background:#d5ff85;border-color:#d5ff85}
+.topbar{background:rgba(11,11,13,.88);border-bottom-color:rgba(244,240,232,.1)}
+.logo span{color:#C7F36B}
+.navlinks .btn{color:#F4F0E8}
+.hero{padding-block:clamp(100px,10vw,140px)}
+.az-flagship-hero h1{font-family:Manrope,sans-serif;font-weight:600}
+.az-flagship-hero h1 em,.az-flagship-visual .visual-headline em{color:#C7F36B}
+.az-art-ring,.az-art-cross{border-color:rgba(199,243,107,.32)}
+.az-art-core{border-color:rgba(199,243,107,.5);color:#F4F0E8}
+.az-art-core span{color:#C7F36B}
+.az-capability-rail i,.az-capability-rail .wrap>div span{color:#c9c6bd}
+.az-capability-rail i{color:#C7F36B}
+.section{padding-block:var(--az-space-section)}
+.section-head{margin-bottom:clamp(30px,4vw,44px)}
+.section-head>p{font-size:.94rem;line-height:1.78}
+.service{padding:var(--az-space-card);background:linear-gradient(145deg,rgba(255,255,255,.022),rgba(255,255,255,.004))}
+.service .num{color:#C7F36B}
+.service .icon{color:#C7F36B;border-color:rgba(199,243,107,.24);background:rgba(199,243,107,.045)}
+.service:hover{background:linear-gradient(145deg,rgba(199,243,107,.085),rgba(255,255,255,.006) 78%)}
+.service:before{background:#C7F36B}
+.work-card .work-tag{color:#C7F36B}
+.work-card:after{border-color:rgba(199,243,107,.2)}
+.step .stepnum{border-color:rgba(199,243,107,.38);color:#C7F36B}
+.cta{background:radial-gradient(ellipse at 90% 50%,rgba(199,243,107,.10),transparent 39%),linear-gradient(110deg,#19191E,#0B0B0D 72%)}
+.contact-detail small{color:#C7F36B}
+.contact-detail a:hover{color:#C7F36B}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:rgba(199,243,107,.75);outline-color:rgba(199,243,107,.14)}
+/* A single deliberate light section creates contrast and makes the studio feel editorial. */
+#about.section{position:relative;isolation:isolate;background:#F4F0E8;color:#19191E}
+#about.section:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 8% 0%,rgba(199,243,107,.14),transparent 35%),linear-gradient(115deg,rgba(255,255,255,.35),transparent 65%)}
+#about .eyebrow{color:#52564a}
+#about .eyebrow:before{background:#777e62}
+#about h2,#about h3,#about .big{color:#19191E}
+#about p,#about .about-copy p{color:#5e5e60}
+#about .manifesto{background:#19191E;border-color:rgba(25,25,30,.12)}
+#about .manifesto .eyebrow{color:#C7F36B}
+#about .manifesto .eyebrow:before{background:#C7F36B}
+#about .manifesto .big{color:#F4F0E8}
+#about .manifesto .big span{color:#C7F36B}
+#about .about-copy h2 span{color:#525f37!important}
+#about .stats{border-top-color:rgba(25,25,30,.18)}
+#about .stat{border-right-color:rgba(25,25,30,.16)}
+#about .stat strong{color:#19191E}
+#about .stat span{color:#626267}
+#about .stat:last-child{border-right:0}
+#contact .contact-form{background:rgba(255,255,255,.025);border-color:rgba(244,240,232,.12)}
+#contact .field input,#contact .field textarea,#contact .field select{background:#141418;color:#F4F0E8;border-color:rgba(244,240,232,.17)}
+#contact .field select option{background:#19191E;color:#F4F0E8}
+#contact .field label{color:#DAD6CD}
+.footer{border-top-color:rgba(244,240,232,.13)}
+@media(max-width:760px){
+ .wrap{width:calc(100% - 44px)}
+ .hero{padding-block:70px 58px}
+ .section{padding-block:72px}
+ #about.section{padding-block:76px}
+ .service{padding:23px}
+}
+@media(max-width:520px){
+ .wrap{width:calc(100% - 40px)}
+ .hero{padding-block:58px 44px}
+ .section{padding-block:64px}
+ .btn{min-height:47px}
+ #about.section{padding-block:68px}
+}
+@media(prefers-reduced-motion:reduce){
+ .orb,.az-ring-one,.az-ring-two{animation:none!important}
+ *{scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+</style>
 <style id="az-final-art-direction-pass">
 /* Final cascade: consistent editorial rhythm and restrained atmospheric background */
 #auranza-atmosphere{position:fixed!important;inset:0!important;z-index:-1!important;display:block!important;width:100vw!important;height:100vh!important;pointer-events:none!important;opacity:.42!important}
