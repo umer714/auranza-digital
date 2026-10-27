@@ -220,11 +220,20 @@ body a:not(.btn):hover{color:#B99A70!important}
  <span id="auranzaCopyStatus" role="status" aria-live="polite" style="display:block;margin-top:6px"></span>
 </div>
 </form></div></main><footer class="foot"><div class="wrap"><span>© 2026 AURANZA</span><span><a href="index.html">Home</a> · <a href="services.html">Services</a> · <a href="about.html">About</a> · <a href="portfolio.html">Concepts</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a></span></div></footer><script>const enquiryForm=document.getElementById('contactForm');const enquiryMessage=document.getElementById('message');const messageCount=document.getElementById('messageCount');if(enquiryMessage&&messageCount){const updateCount=()=>{messageCount.textContent=enquiryMessage.value.length+' / 3000 characters';};enquiryMessage.addEventListener('input',updateCount);updateCount();}enquiryForm.addEventListener('submit',e=>{e.preventDefault();if(!enquiryForm.reportValidity())return;const v=id=>document.getElementById(id).value.trim();const subject=encodeURIComponent('AURANZA enquiry — '+v('service'));const body=encodeURIComponent('Name: '+v('name')+'\nEmail: '+v('email')+'\nService: '+v('service')+'\nBudget: '+v('budget')+'\nPreferred timeline: '+v('timeline')+'\n\nProject details:\n'+v('message'));document.getElementById('status').textContent='Opening your email app. Review the draft and press Send; the enquiry is not sent automatically.';location.href='mailto:auranza.digital@gmail.com?subject='+subject+'&body='+body;});</script><script>
-(()=>{const button=document.querySelector('.nav-toggle');const links=document.querySelector('.nav-links');if(!button||!links)return;
-const close=()=>{links.classList.remove('open');button.setAttribute('aria-expanded','false');button.textContent='☰';button.setAttribute('aria-label','Open navigation menu')};
-button.addEventListener('click',()=>{const open=button.getAttribute('aria-expanded')!=='true';if(open){links.classList.add('open');button.setAttribute('aria-expanded','true');button.textContent='✕';button.setAttribute('aria-label','Close navigation menu')}else close()});
-links.querySelectorAll('a').forEach(link=>link.addEventListener('click',close));
-document.addEventListener('keydown',event=>{if(event.key==='Escape')close()});
+(()=> {
+ const button=document.querySelector('.nav-toggle');
+ const links=document.querySelector('.nav-links');
+ if(!button||!links)return;
+ const close=()=>{links.classList.remove('open');button.setAttribute('aria-expanded','false');button.textContent='☰';button.setAttribute('aria-label','Open navigation menu')};
+ button.addEventListener('click',()=>{
+   const open=button.getAttribute('aria-expanded')!=='true';
+   if(open){links.classList.add('open');button.setAttribute('aria-expanded','true');button.textContent='✕';button.setAttribute('aria-label','Close navigation menu')}
+   else close();
+ });
+ links.querySelectorAll('a').forEach(link=>link.addEventListener('click',close));
+ document.addEventListener('keydown',event=>{if(event.key==='Escape'&&button.getAttribute('aria-expanded')==='true'){close();button.focus()}});
+ document.addEventListener('click',event=>{if(button.getAttribute('aria-expanded')==='true'&&!links.contains(event.target)&&!button.contains(event.target))close()});
+ window.addEventListener('resize',()=>{if(window.innerWidth>850)close()},{passive:true});
 })();
 </script>
 <!-- AURANZA SHARED PREMIUM POLISH -->
