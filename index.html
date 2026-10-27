@@ -105,7 +105,7 @@ input,textarea,select,.field input,.field textarea,.field select{
 }
 .logo span,.eyebrow,.eyebrow:before,.num,.section h2 span,.section h2 em,
 .contact-info h2 span,#about .about-copy h2 span,.work-tag,.stepnum,
-.service .icon,.az-art-core span,.hero h1 em,.az-flagship-hero h1 em,
+.service .icon,.az-art-core span,.hero h1 em,.hero h1 em,
 .az-flagship-visual .visual-headline em,a:hover{
  color:#B99A70!important;
 }
@@ -163,17 +163,17 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media (hover:none){a:hover,button:hover{filter:none}}
 </style>
 <script type="application/ld+json" id="az-faq-schema">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What services does AURANZA offer?","acceptedAnswer":{"@type":"Answer","text":"AURANZA focuses on website design, SEO and content, social media, brand and creative direction, and digital strategy."}},{"@type":"Question","name":"How does a project get started?","acceptedAnswer":{"@type":"Answer","text":"Share a short description of your goal, audience and timing constraints so the scope and possible next steps can be clarified before any commitment."}},{"@type":"Question","name":"Do you publish real client case studies?","acceptedAnswer":{"@type":"Answer","text":"The portfolio currently contains clearly labelled illustrative concepts, not completed client work or verified results."}},{"@type":"Question","name":"How are pricing and timelines decided?","acceptedAnswer":{"@type":"Answer","text":"Pricing and timelines depend on deliverables, complexity, content readiness and required integrations. Scope is clarified before committing."}},{"@type":"Question","name":"Does the website enquiry form send automatically?","acceptedAnswer":{"@type":"Answer","text":"No. The form prepares an email draft in the visitor's email app. The visitor must review and send it."}}]}</script>\n<style id="az-flagship-agency-experience">
-.az-flagship-hero{min-height:0;isolation:isolate;overflow:hidden;padding:clamp(76px,8.2vw,116px) 0 clamp(62px,6.5vw,90px)}
+.hero{min-height:0;isolation:isolate;overflow:hidden;padding:clamp(76px,8.2vw,116px) 0 clamp(62px,6.5vw,90px)}
 .az-flagship-hero:after{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;background:linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);background-size:calc((100vw - 1240px)/2 + 90px) 100%;opacity:.3}
 .az-hero-orbit{position:absolute;z-index:-1;width:690px;height:690px;right:-250px;top:-160px;border:1px solid rgba(240,220,176,.1);border-radius:50%;box-shadow:0 0 0 1px rgba(240,220,176,.025),0 0 0 72px rgba(240,220,176,.018),0 0 0 145px rgba(240,220,176,.012);pointer-events:none}
-.az-flagship-hero .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(390px,.92fr);align-items:center;gap:clamp(34px,5.5vw,82px)}
+.hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(390px,.92fr);align-items:center;gap:clamp(34px,5.5vw,82px)}
 .az-flagship-hero .hero-copy{max-width:690px}
-.az-flagship-hero .eyebrow{font-size:.62rem;letter-spacing:.14em}
-.az-flagship-hero h1{max-width:780px;font-size:clamp(3.8rem,6.5vw,6.8rem);line-height:.94;letter-spacing:-.09em;margin:29px 0 26px}
-.az-flagship-hero h1 em{font-style:normal;color:transparent;background:linear-gradient(115deg,#fff1d2 0%,#c6a46a 52%,#f0dcb0 100%);background-clip:text;-webkit-background-clip:text}
-.az-flagship-hero .hero-copy>p{max-width:510px;font-size:clamp(1rem,1.2vw,1.1rem);line-height:1.9;color:#c4c0b7}
-.az-flagship-hero .hero-actions{margin-top:32px;gap:12px}
-.az-flagship-hero .hero-actions .btn{min-height:54px;padding-inline:20px;font-size:.81rem}
+.hero .eyebrow{font-size:.62rem;letter-spacing:.14em}
+.hero h1{max-width:780px;font-size:clamp(3.8rem,6.5vw,6.8rem);line-height:.94;letter-spacing:-.09em;margin:29px 0 26px}
+.hero h1 em{font-style:normal;color:transparent;background:linear-gradient(115deg,#fff1d2 0%,#c6a46a 52%,#f0dcb0 100%);background-clip:text;-webkit-background-clip:text}
+.hero-copy>p{max-width:510px;font-size:clamp(1rem,1.2vw,1.1rem);line-height:1.9;color:#c4c0b7}
+.hero{margin-top:32px;gap:12px}
+.hero .btn{min-height:54px;padding-inline:20px;font-size:.81rem}
 .az-flagship-hero .hero-note{margin-top:36px;font-size:.68rem;letter-spacing:.015em}
 .az-hero-index{display:flex;justify-content:space-between;gap:12px;margin-top:47px;padding-top:14px;border-top:1px solid rgba(240,220,176,.15);font-size:.52rem;letter-spacing:.13em;color:#8e8a80}
 .az-flagship-visual{min-height:0;padding:22px 24px 18px;border-radius:2px;border-color:rgba(240,220,176,.25);background:radial-gradient(ellipse at 60% 34%,rgba(194,157,91,.14),transparent 43%),linear-gradient(145deg,#1a1b1d,#101114 62%,#0b0c0e);box-shadow:0 40px 100px rgba(0,0,0,.4),inset 0 1px rgba(255,255,255,.06)}
@@ -200,9 +200,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .az-capability-rail .wrap>div{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .az-capability-rail .wrap>div span{font-size:.7rem;color:#d4d0c7;white-space:nowrap}
 .az-capability-rail i{font-style:normal;color:#c6a66e;font-size:.7rem}
-@media(max-width:900px){.az-flagship-hero .hero-grid{grid-template-columns:minmax(0,1fr) minmax(300px,.88fr);gap:28px}.az-flagship-hero h1{font-size:clamp(3.5rem,7vw,5rem)}.az-flagship-visual{padding:19px}.az-capability-rail .wrap{grid-template-columns:auto 1fr}.az-rail-note{display:none}.az-capability-rail .wrap>div{flex-wrap:wrap;justify-content:flex-start;column-gap:16px;row-gap:8px}}
-@media(max-width:720px){.az-flagship-hero{padding:62px 0 56px}.az-flagship-hero .hero-grid{grid-template-columns:minmax(0,1fr)}.az-flagship-hero h1{font-size:clamp(3.25rem,11vw,5rem)}.az-flagship-visual{max-width:600px;width:100%;margin:12px auto 0}.az-visual-art{height:230px}.az-flagship-visual .visual-headline{font-size:clamp(3rem,9vw,4.2rem)}.az-hero-index{margin-top:33px}.az-capability-rail .wrap{grid-template-columns:1fr;gap:11px}.az-capability-rail .wrap>div{gap:9px 13px}.az-capability-rail .wrap>div span{font-size:.66rem}}
-@media(max-width:430px){.az-flagship-hero h1{font-size:clamp(2.8rem,12vw,3.7rem)}.az-flagship-hero .eyebrow{font-size:.55rem;letter-spacing:.09em}.az-hero-index{font-size:.45rem}.az-flagship-visual{padding:15px}.az-visual-art{height:200px}.az-art-core{width:78px;height:78px}.az-flagship-visual .visual-headline{font-size:2.8rem}.az-label-top,.az-label-bottom{font-size:.42rem}}
+@media(max-width:900px){.hero-grid{grid-template-columns:minmax(0,1fr) minmax(300px,.88fr);gap:28px}.hero h1{font-size:clamp(3.5rem,7vw,5rem)}.az-flagship-visual{padding:19px}.az-capability-rail .wrap{grid-template-columns:auto 1fr}.az-rail-note{display:none}.az-capability-rail .wrap>div{flex-wrap:wrap;justify-content:flex-start;column-gap:16px;row-gap:8px}}
+@media(max-width:720px){.hero{padding:62px 0 56px}.hero-grid{grid-template-columns:minmax(0,1fr)}.hero h1{font-size:clamp(3.25rem,11vw,5rem)}.az-flagship-visual{max-width:600px;width:100%;margin:12px auto 0}.az-visual-art{height:230px}.az-flagship-visual .visual-headline{font-size:clamp(3rem,9vw,4.2rem)}.az-hero-index{margin-top:33px}.az-capability-rail .wrap{grid-template-columns:1fr;gap:11px}.az-capability-rail .wrap>div{gap:9px 13px}.az-capability-rail .wrap>div span{font-size:.66rem}}
+@media(max-width:430px){.hero h1{font-size:clamp(2.8rem,12vw,3.7rem)}.hero .eyebrow{font-size:.55rem;letter-spacing:.09em}.az-hero-index{font-size:.45rem}.az-flagship-visual{padding:15px}.az-visual-art{height:200px}.az-art-core{width:78px;height:78px}.az-flagship-visual .visual-headline{font-size:2.8rem}.az-label-top,.az-label-bottom{font-size:.42rem}}
 @media(prefers-reduced-motion:reduce){.az-ring-one,.az-ring-two{animation:none}}
 </style>
 <style id="az-home-faq-design">
@@ -647,8 +647,8 @@ p{color:#92929B;line-height:1.72}
 .logo span{color:#C7F36B}
 .navlinks .btn{color:#F4F0E8}
 .hero{padding-block:clamp(100px,10vw,140px)}
-.az-flagship-hero h1{font-family:Manrope,sans-serif;font-weight:600}
-.az-flagship-hero h1 em,.az-flagship-visual .visual-headline em{color:#C7F36B}
+.hero h1{font-family:Manrope,sans-serif;font-weight:600}
+.hero h1 em,.az-flagship-visual .visual-headline em{color:#C7F36B}
 .az-art-ring,.az-art-cross{border-color:rgba(199,243,107,.32)}
 .az-art-core{border-color:rgba(199,243,107,.5);color:#F4F0E8}
 .az-art-core span{color:#C7F36B}
@@ -717,12 +717,12 @@ p{color:#92929B;line-height:1.72}
 body{isolation:isolate}
 body:before{z-index:-3!important}
 body:after{z-index:-2!important}
-.az-flagship-hero{min-height:0;padding:clamp(66px,7.4vw,104px) 0 clamp(58px,6vw,82px)}
-.az-flagship-hero .hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,4.4vw,68px)}
-.az-flagship-hero h1{font-size:clamp(3.7rem,6.35vw,6.55rem);line-height:.96;letter-spacing:-.082em;margin:24px 0 22px;max-width:740px}
-.az-flagship-hero .hero-copy>p{max-width:490px;font-size:clamp(.98rem,1.12vw,1.08rem);line-height:1.82}
-.az-flagship-hero .hero-actions{margin-top:27px;gap:10px}
-.az-flagship-hero .hero-actions .btn{min-height:50px;padding:13px 17px}
+.hero{min-height:0;padding:clamp(66px,7.4vw,104px) 0 clamp(58px,6vw,82px)}
+.hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,4.4vw,68px)}
+.hero h1{font-size:clamp(3.7rem,6.35vw,6.55rem);line-height:.96;letter-spacing:-.082em;margin:24px 0 22px;max-width:740px}
+.hero-copy>p{max-width:490px;font-size:clamp(.98rem,1.12vw,1.08rem);line-height:1.82}
+.hero{margin-top:27px;gap:10px}
+.hero .btn{min-height:50px;padding:13px 17px}
 .az-flagship-hero .hero-note{margin-top:28px}
 .az-hero-index{margin-top:35px;font-size:.49rem;letter-spacing:.11em}
 .az-flagship-visual{padding:20px 22px 17px;box-shadow:0 28px 72px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.05)}
@@ -738,8 +738,8 @@ body:after{z-index:-2!important}
 .work-card{min-height:290px}
 .btn:focus-visible,.navlinks a:focus-visible,.az-capability-rail a:focus-visible{outline:2px solid var(--gold-light);outline-offset:4px}
 @media(max-width:1000px){
- .az-flagship-hero .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:25px}
- .az-flagship-hero h1{font-size:clamp(3.3rem,6.6vw,5.1rem)}
+ .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:25px}
+ .hero h1{font-size:clamp(3.3rem,6.6vw,5.1rem)}
  .az-flagship-visual{padding:17px}
  .az-visual-art{height:190px}
  .az-flagship-visual .visual-headline{font-size:clamp(2.55rem,4.4vw,3.5rem)}
@@ -747,12 +747,12 @@ body:after{z-index:-2!important}
  .az-capability-rail .wrap>div{justify-content:flex-start;flex-wrap:wrap;gap:8px 12px}
 }
 @media(max-width:760px){
- .az-flagship-hero{padding:54px 0 48px}
- .az-flagship-hero .hero-grid{grid-template-columns:minmax(0,1fr);gap:27px}
- .az-flagship-hero h1{font-size:clamp(3.25rem,10.8vw,4.9rem);line-height:.97;letter-spacing:-.078em;margin:21px 0 18px}
- .az-flagship-hero .hero-copy>p{max-width:570px;font-size:1rem;line-height:1.78}
- .az-flagship-hero .hero-actions{display:flex;gap:10px;margin-top:24px}
- .az-flagship-hero .hero-actions .btn{width:auto;min-height:48px}
+ .hero{padding:54px 0 48px}
+ .hero-grid{grid-template-columns:minmax(0,1fr);gap:27px}
+ .hero h1{font-size:clamp(3.25rem,10.8vw,4.9rem);line-height:.97;letter-spacing:-.078em;margin:21px 0 18px}
+ .hero-copy>p{max-width:570px;font-size:1rem;line-height:1.78}
+ .hero{display:flex;gap:10px;margin-top:24px}
+ .hero .btn{width:auto;min-height:48px}
  .az-flagship-visual{width:100%;max-width:590px;margin:0 auto;padding:18px}
  .az-visual-art{height:215px}
  .az-flagship-visual .visual-headline{font-size:clamp(3rem,8.7vw,4rem)}
@@ -764,12 +764,12 @@ body:after{z-index:-2!important}
  .service{min-height:220px}
 }
 @media(max-width:520px){
- .az-flagship-hero{padding:43px 0 40px}
- .az-flagship-hero .eyebrow{font-size:.54rem;letter-spacing:.095em;gap:7px}
- .az-flagship-hero h1{font-size:clamp(2.75rem,11.9vw,3.75rem);line-height:.99;letter-spacing:-.075em;margin:19px 0 17px}
- .az-flagship-hero .hero-copy>p{font-size:.95rem;line-height:1.76}
- .az-flagship-hero .hero-actions{display:grid;grid-template-columns:1fr;gap:9px;margin-top:22px}
- .az-flagship-hero .hero-actions .btn{width:100%;min-height:48px;padding:12px 16px}
+ .hero{padding:43px 0 40px}
+ .hero .eyebrow{font-size:.54rem;letter-spacing:.095em;gap:7px}
+ .hero h1{font-size:clamp(2.75rem,11.9vw,3.75rem);line-height:.99;letter-spacing:-.075em;margin:19px 0 17px}
+ .hero-copy>p{font-size:.95rem;line-height:1.76}
+ .hero{display:grid;grid-template-columns:1fr;gap:9px;margin-top:22px}
+ .hero .btn{width:100%;min-height:48px;padding:12px 16px}
  .az-flagship-hero .hero-note{margin-top:23px;font-size:.66rem}
  .az-hero-index{margin-top:25px;font-size:.43rem;letter-spacing:.07em}
  .az-flagship-visual{padding:14px}
@@ -935,7 +935,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .btn:hover,.btn.primary:hover,.navlinks .btn:hover,button.btn:hover{
  background:#B99A70!important;border-color:#B99A70!important;color:#0B0B0D!important;
 }
-.hero h1 em,.az-flagship-hero h1 em,.az-flagship-visual .visual-headline em,
+.hero h1 em,.hero h1 em,.az-flagship-visual .visual-headline em,
 .section h2 em,.contact-info h2 span,#about .about-copy h2 span{
  color:#A8875B!important;
 }
@@ -1247,28 +1247,28 @@ const enquiryForm=document.getElementById('contactForm');const enquiryMessage=do
 
 <style id="auranza-hero-actions-premium">
 /* Refined hero actions: compact, editorial, premium */
-.az-flagship-hero .hero-actions{gap:11px;margin-top:27px;align-items:center}
-.az-flagship-hero .hero-actions .btn{
+.hero{gap:11px;margin-top:27px;align-items:center}
+.hero .btn{
   min-height:44px;padding:11px 16px;gap:10px;border-radius:2px;
   font-size:.79rem;font-weight:600;letter-spacing:.015em;
   box-shadow:none;transform:none;transition:background .22s ease,border-color .22s ease,color .22s ease;
 }
-.az-flagship-hero .hero-actions .btn.primary{
+.hero .btn.primary{
   background:linear-gradient(135deg,#d6bd8c,#b99a70);border-color:#b99a70;color:#17130c;
 }
-.az-flagship-hero .hero-actions .btn:not(.primary){
+.hero .btn:not(.primary){
   background:rgba(255,255,255,.018);border-color:rgba(185,154,112,.42);color:#c9bda9;
 }
-.az-flagship-hero .hero-actions .btn .arrow{font-size:.95rem;opacity:.82;transition:transform .22s ease}
-.az-flagship-hero .hero-actions .btn:hover{transform:translateY(-1px);box-shadow:0 7px 22px rgba(0,0,0,.18)}
-.az-flagship-hero .hero-actions .btn.primary:hover{background:#e2c99a;border-color:#e2c99a;color:#111}
-.az-flagship-hero .hero-actions .btn:not(.primary):hover{background:rgba(185,154,112,.09);border-color:#b99a70;color:#e0cba8}
-.az-flagship-hero .hero-actions .btn:focus-visible{outline:2px solid #c8aa7b;outline-offset:4px}
+.hero .btn .arrow{font-size:.95rem;opacity:.82;transition:transform .22s ease}
+.hero .btn:hover{transform:translateY(-1px);box-shadow:0 7px 22px rgba(0,0,0,.18)}
+.hero .btn.primary:hover{background:#e2c99a;border-color:#e2c99a;color:#111}
+.hero .btn:not(.primary):hover{background:rgba(185,154,112,.09);border-color:#b99a70;color:#e0cba8}
+.hero .btn:focus-visible{outline:2px solid #c8aa7b;outline-offset:4px}
 @media(max-width:560px){
- .az-flagship-hero .hero-actions{gap:9px;margin-top:23px}
- .az-flagship-hero .hero-actions .btn{min-height:42px;padding:10px 13px;font-size:.75rem;gap:8px}
+ .hero{gap:9px;margin-top:23px}
+ .hero .btn{min-height:42px;padding:10px 13px;font-size:.75rem;gap:8px}
 }
-@media(prefers-reduced-motion:reduce){.az-flagship-hero .hero-actions .btn,.az-flagship-hero .hero-actions .btn .arrow{transition:none}}
+@media(prefers-reduced-motion:reduce){.hero .btn,.hero .btn .arrow{transition:none}}
 </style>
 
 </body></html>
