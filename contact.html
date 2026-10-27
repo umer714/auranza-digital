@@ -229,7 +229,7 @@ if(enquiryMessage&&messageCount){const updateCount=()=>{messageCount.textContent
 function openEmailDraft(v){
  const subject=encodeURIComponent('AURANZA enquiry — '+v.service);
  const body=encodeURIComponent('Name: '+v.name+'\nEmail: '+v.email+'\nService: '+v.service+'\nBudget: '+v.budget+'\nPreferred timeline: '+v.timeline+'\n\nProject details:\n'+v.message);
- enquiryStatus.textContent='Online email delivery is not configured yet. An email draft is opening instead; review it and press Send.';
+ enquiryStatus.textContent='Your enquiry has NOT been sent yet. Online delivery failed, so an email draft is opening. Review the details and press Send in your email app to complete delivery.';
  location.href='mailto:auranza.digital@gmail.com?subject='+subject+'&body='+body;
 }
 enquiryForm.addEventListener('submit',async e=>{
@@ -252,7 +252,7 @@ enquiryForm.addEventListener('submit',async e=>{
    enquiryStatus.textContent=result.error||'The enquiry could not be sent. Please email auranza.digital@gmail.com directly.';
   }
  }catch(error){
-  enquiryStatus.textContent='Could not reach the secure form service. Opening an email draft as a fallback.';
+  enquiryStatus.textContent='Your enquiry has NOT been sent yet. The secure form service could not be reached. An email draft is opening; review it and press Send to complete delivery.';
   openEmailDraft(payload);
  }finally{submitButton.disabled=false;submitButton.textContent='Send enquiry ↗';}
 });
