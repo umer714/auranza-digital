@@ -1271,4 +1271,73 @@ const enquiryForm=document.getElementById('contactForm');const enquiryMessage=do
 @media(prefers-reduced-motion:reduce){.hero .btn,.hero .btn .arrow{transition:none}}
 </style>
 
+
+<style id="auranza-sections-premium-pass">
+/* Premium section pass: consistent editorial rhythm, fine borders, restrained motion */
+#services,#about,#work,#process,#contact,#az-home-faq{position:relative;isolation:isolate}
+#services:before,#work:before,#process:before,#contact:before{
+ content:"";position:absolute;inset:0 0 auto;height:1px;
+ background:linear-gradient(90deg,transparent,rgba(185,154,112,.22),transparent);
+ pointer-events:none
+}
+#services .section-head,#work .section-head,#process .section-head{margin-bottom:44px}
+#services .services{gap:0;border-top:1px solid rgba(185,154,112,.2);border-left:1px solid rgba(185,154,112,.12)}
+#services .service{
+ position:relative;min-width:0;padding:30px 28px 32px;
+ border-right:1px solid rgba(185,154,112,.12);
+ border-bottom:1px solid rgba(185,154,112,.2);
+ background:linear-gradient(145deg,rgba(255,255,255,.022),rgba(255,255,255,0) 62%);
+ transition:background .25s ease,border-color .25s ease,transform .25s ease
+}
+#services .service:after{
+ content:"";position:absolute;left:28px;right:28px;bottom:-1px;height:1px;
+ background:linear-gradient(90deg,#b99a70,transparent);transform:scaleX(0);transform-origin:left;
+ transition:transform .28s ease
+}
+#services .service:hover{background:linear-gradient(145deg,rgba(185,154,112,.075),rgba(255,255,255,.008) 72%);border-color:rgba(185,154,112,.3);transform:translateY(-2px)}
+#services .service:hover:after{transform:scaleX(1)}
+#services .service .num,#work .work-tag{letter-spacing:.13em;color:#b99a70;font-size:.65rem}
+#services .service .icon{
+ width:44px;height:44px;display:grid;place-items:center;margin:24px 0 21px;
+ border:1px solid rgba(185,154,112,.28);border-radius:50%;
+ color:#d4bc91;background:rgba(185,154,112,.045);font-size:1.15rem
+}
+#services .service h3{letter-spacing:-.035em;margin:0 0 10px}
+#services .service p,#work .work-card p{color:#aaa69e;line-height:1.8}
+#work .work-grid{gap:14px}
+#work .work-card{
+ min-width:0;min-height:275px;padding:26px;
+ border:1px solid rgba(185,154,112,.2);border-radius:3px;
+ background:radial-gradient(ellipse at 100% 0%,rgba(185,154,112,.085),transparent 52%),linear-gradient(145deg,rgba(255,255,255,.026),rgba(255,255,255,.006));
+ display:flex;flex-direction:column;justify-content:space-between;
+ transition:transform .25s ease,border-color .25s ease,background .25s ease
+}
+#work .work-card:hover{transform:translateY(-3px);border-color:rgba(185,154,112,.5);background:radial-gradient(ellipse at 100% 0%,rgba(185,154,112,.12),transparent 55%),rgba(255,255,255,.018)}
+#work .work-card h3{letter-spacing:-.045em;line-height:1.12}
+#work .sample-note{border-left:2px solid rgba(185,154,112,.5);padding:8px 0 8px 14px;color:#969188;font-size:.82rem;line-height:1.75}
+#about .manifesto,#contact .contact-info{position:relative}
+#about .manifesto .big{letter-spacing:-.055em}
+#contact .contact-grid{align-items:start}
+#contact .contact-form,#contact form{border:1px solid rgba(185,154,112,.22);background:linear-gradient(145deg,rgba(255,255,255,.025),rgba(255,255,255,.008));padding:clamp(20px,3vw,34px)}
+#contact input,#contact select,#contact textarea{border-color:rgba(185,154,112,.23);background:rgba(8,9,12,.62);border-radius:2px}
+#contact input:focus,#contact select:focus,#contact textarea:focus{outline:1px solid #b99a70;border-color:#b99a70}
+#az-home-faq .az-faq-list details{border-color:rgba(185,154,112,.2)}
+#az-home-faq .az-faq-list summary{transition:color .2s ease}
+#az-home-faq .az-faq-list summary:hover{color:#d7c19a}
+@media(max-width:760px){
+ #services .section-head,#work .section-head,#process .section-head{margin-bottom:28px}
+ #services .service{padding:24px 20px 26px}
+ #services .service .icon{margin:19px 0 16px}
+ #services .service:after{left:20px;right:20px}
+ #work .work-card{min-height:230px;padding:22px}
+ #contact .contact-form,#contact form{padding:20px}
+}
+@media(hover:none){
+ #services .service:hover,#work .work-card:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+ #services .service,#services .service:after,#work .work-card{transition:none}
+}
+</style>
+
 </body></html>
