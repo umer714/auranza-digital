@@ -246,7 +246,7 @@ enquiryForm.addEventListener('submit',async e=>{
   if(response.ok&&result.ok){
    enquiryStatus.textContent='Your enquiry was sent successfully. Thank you — AURANZA has received your message.';
    enquiryForm.reset();if(messageCount)messageCount.textContent='0 / 3000 characters';
-  }else if(response.status===503){
+  }else if(response.status===503||response.status===502){
    openEmailDraft(payload);
   }else{
    enquiryStatus.textContent=result.error||'The enquiry could not be sent. Please email auranza.digital@gmail.com directly.';
