@@ -91,7 +91,10 @@ module.exports = async function handler(req, res) {
     if (!providerResponse.ok) {
       // Avoid returning provider internals or secrets to the visitor.
       console.error("AURANZA email provider returned status", providerResponse.status);
-      return res.status(502).json({ ok: false, error: "Email delivery failed. Please email auranza.digital@gmail.com directly." });
+      const providerError = providerResponse.status === 403
+        ? "Online email delivery is blocked by the email provider. A verified sending domain is required for the current recipient. Please use the direct email fallback."
+        : "Email delivery failed. Please use the direct email fallback.";
+      return res.status(502).json({ ok: false, code: providerResponse.status === 403 ? "SENDER_DOMAIN_NOT_VERIFIED_OR_RESTRICTED" : "EMAIL_PROVIDER_ERROR", error: providerError });
     }
     return res.status(200).json({ ok: true });
   } catch (error) {
