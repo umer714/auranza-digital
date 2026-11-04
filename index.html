@@ -1390,6 +1390,40 @@ const enquiryForm=document.getElementById('contactForm');const enquiryMessage=do
   .visual-headline{font-size:clamp(2.1rem,3.1vw,3.2rem);margin:11px 0 14px}
 }
 
+
+/* Desktop viewport-fit correction v2: compress the complete hero composition, not just its outer padding. */
+@media screen and (min-width:1000px) and (max-height:900px){
+  header.topbar nav{height:62px}
+  .hero{padding:12px 0 18px!important}
+  .hero-grid{align-items:center;gap:clamp(20px,2.6vw,34px)}
+  .hero-copy{max-width:620px}
+  .hero .eyebrow{font-size:.58rem;letter-spacing:.12em}
+  .hero h1{font-size:clamp(2.8rem,4.45vw,4.15rem)!important;line-height:.94!important;margin:12px 0 13px!important;letter-spacing:-.075em}
+  .hero-copy>p{font-size:.91rem!important;line-height:1.5!important;max-width:440px}
+  .hero-actions{margin-top:15px!important;gap:9px}
+  .hero-actions .btn{min-height:40px!important;padding:9px 13px!important;font-size:.72rem}
+  .hero-note{margin-top:13px!important;font-size:.62rem!important;line-height:1.45}
+  .az-hero-index{margin-top:13px!important;padding-top:9px;font-size:.43rem}
+  .studio-visual.az-flagship-visual{min-height:0!important;padding:13px 17px 12px!important}
+  .az-flagship-visual .visual-top{padding-bottom:10px}
+  .az-visual-art{height:clamp(105px,17vh,145px)!important}
+  .az-art-core{width:72px;height:72px}
+  .az-flagship-visual .visual-main{padding:12px 0 10px!important}
+  .az-flagship-visual .visual-kicker{font-size:.52rem}
+  .az-flagship-visual .visual-headline{font-size:clamp(2rem,3.1vw,2.8rem)!important;line-height:.94!important;margin:8px 0 10px!important}
+  .az-flagship-visual .visual-bottom{margin-top:9px;font-size:.49rem}
+  .az-flagship-visual .visual-caption{padding-top:8px;font-size:.48rem}
+}
+@media screen and (min-width:1000px) and (max-height:700px){
+  .hero{padding:7px 0 10px!important}
+  .hero h1{font-size:clamp(2.55rem,4vw,3.45rem)!important;margin:9px 0 10px!important}
+  .hero-copy>p{font-size:.84rem!important;line-height:1.42!important}
+  .hero-note{margin-top:9px!important}
+  .az-hero-index{display:none!important}
+  .az-visual-art{height:95px!important}
+  .az-flagship-visual .visual-headline{font-size:2rem!important}
+}
+
 </style>
 
 </body></html>
