@@ -41,7 +41,8 @@ export default function CloudSync() {
         const localTasks = readJson<LocalTask[]>("jarvis-tasks-v1", []);
         const taskMap = readJson<Record<string, string>>(TASK_MAP, {});
         const mergedTasks = new Map<string, LocalTask>();
-        for (const row of remoteTasks.data ?? []) {
+        const taskRows = (remoteTasks.data ?? []) as Array<{ id: string; title: string; completed: boolean }>;
+        for (const row of taskRows) {
           const numericId = Number.parseInt(row.id.replace(/-/g, "").slice(0, 12), 16) % 9007199254740000;
           taskMap[String(numericId)] = row.id;
           mergedTasks.set(row.id, { id: numericId, title: row.title, done: !!row.completed });
@@ -67,7 +68,8 @@ export default function CloudSync() {
         const localNotes = readJson<string[]>("jarvis-memory-v1", []);
         const memoryMap = readJson<Record<string, string>>(MEMORY_MAP, {});
         const mergedNotes = new Map<string, string>();
-        for (const row of remoteMemories.data ?? []) {
+        const memoryRows = (remoteMemories.data ?? []) as Array<{ id: string; content: string }>;
+        for (const row of memoryRows) {
           mergedNotes.set(row.id, row.content);
           memoryMap[row.content] = row.id;
         }
