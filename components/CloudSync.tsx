@@ -63,7 +63,7 @@ export default function CloudSync() {
             id: taskMap[String(task.id)], user_id: uid, title: task.title,
             details: "", completed: task.done, updated_at: new Date().toISOString()
           }));
-          const result = await supabase.from("jarvis_tasks").upsert(payload, { onConflict: "id" });
+          const result = await db.from("jarvis_tasks").upsert(payload, { onConflict: "id" });
           if (result.error) throw result.error;
         }
 
@@ -88,7 +88,7 @@ export default function CloudSync() {
             id: memoryMap[note], user_id: uid, title: note.slice(0, 80),
             content: note, category: "general", updated_at: new Date().toISOString()
           }));
-          const result = await supabase.from("jarvis_memories").upsert(payload, { onConflict: "id" });
+          const result = await db.from("jarvis_memories").upsert(payload, { onConflict: "id" });
           if (result.error) throw result.error;
         }
         window.dispatchEvent(new CustomEvent("jarvis-cloud-sync-complete"));
