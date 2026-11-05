@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import CloudAccount from "@/components/CloudAccount";
 
 type Message = { role: "user" | "assistant"; content: string; sources?: { title: string; uri: string }[] };
 type Task = { id: number; title: string; done: boolean };
@@ -151,7 +152,7 @@ export default function Home() {
       </aside>
 
       <section className="main-panel">
-        <header className="topbar"><div className="breadcrumb">WORKSPACE <span>/</span> <b>ASSISTANT</b></div><div className="top-right"><span className="secure">◈ PRIVATE SESSION</span><div className="avatar">U</div></div></header>
+        <header className="topbar"><div className="breadcrumb">WORKSPACE <span>/</span> <b>ASSISTANT</b></div><div className="top-right"><span className="secure">◈ PRIVATE SESSION</span><CloudAccount /></div></header>
         <div className="content">
           <div className="welcome">
             <div className="eyebrow"><span className="pulse" /> YOUR PERSONAL AI</div>
