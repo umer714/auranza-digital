@@ -4,12 +4,16 @@ import PWAInstall from "@/components/PWAInstall";
 
 export const metadata: Metadata = {
   title: "JARVIS AI — Personal Intelligence",
-  description: "Your personal AI companion. Voice, memory-ready chat, and intelligent tools.",
+  description: "Your personal AI assistant. Voice, memory-ready chat, and intelligent tools.",
   applicationName: "JARVIS AI",
   manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [{ url: "/jarvis-icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-icon", sizes: "180x180", type: "image/png" }],
+  },
 };
 export const viewport: Viewport = {
-  themeColor: "#070a12",
+  themeColor: "#050912",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
