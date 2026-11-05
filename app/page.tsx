@@ -20,6 +20,7 @@ export default function Home() {
   const [listening, setListening] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [voiceOn, setVoiceOn] = useState(true);
+  const [webSearch, setWebSearch] = useState(false);
   const [notice, setNotice] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
   const [taskInput, setTaskInput] = useState("");
@@ -67,7 +68,7 @@ export default function Home() {
     const next = [...messages, { role: "user" as const, content: clean }];
     setMessages(next); setInput(""); setBusy(true); setNotice("");
     try {
-      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: next }) });
+      const res = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: next, webSearch }) });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Response nahi mil saka.");
       const answer = String(data.reply || "Mujhe jawab nahi mila.");
@@ -137,7 +138,7 @@ export default function Home() {
               <button type="button" className={`mic-btn ${listening ? "recording" : ""}`} onClick={toggleMic} aria-label="Voice input"> {listening ? "■" : "♩"} </button>
               <button type="submit" className="send-btn" disabled={!input.trim() || busy}>↑</button>
             </form>
-            <div className="composer-foot"><span>↵ ENTER TO SEND</span><button onClick={() => setVoiceOn(!voiceOn)}>{voiceOn ? "◖ Voice replies on" : "◖ Voice replies off"}</button><span>AI CAN MAKE MISTAKES</span></div>
+            <div className="composer-foot"><button type="button" className={`search-toggle ${webSearch ? "enabled" : ""}`} onClick={() => setWebSearch(!webSearch)} title="Allow JARVIS to search Google for this answer">⌕ {webSearch ? "Web search on" : "Web search off"}</button><button type="button" onClick={() => setVoiceOn(!voiceOn)}>{voiceOn ? "◖ Voice replies on" : "◖ Voice replies off"}</button><span>↵ ENTER TO SEND</span></div>
           </div>
           <div className="quick-actions"><button onClick={() => setActiveTool(activeTool === "tasks" ? null : "tasks")}>☷ <span>My tasks</span></button><button onClick={() => setActiveTool(activeTool === "memory" ? null : "memory")}>◷ <span>Memory vault</span></button><button onClick={() => void send("Mujhe aaj ka productive plan banane mein madad karo.")}>✳ <span>Plan my day</span></button></div>
           {activeTool === "tasks" && <section className="utility-card"><div className="utility-heading"><div><span>PERSONAL WORKSPACE</span><h2>My tasks</h2></div><b>{tasks.filter(t => !t.done).length} OPEN</b></div><form className="utility-form" onSubmit={addTask}><input value={taskInput} onChange={e => setTaskInput(e.target.value)} placeholder="Add a task..." aria-label="New task" /><button disabled={!taskInput.trim()}>Add task</button></form><div className="task-list">{tasks.length === 0 ? <p className="empty-state">Abhi koi task nahi. Apna pehla task add karein.</p> : tasks.map(task => <div className="task-row" key={task.id}><label><input type="checkbox" checked={task.done} onChange={() => setTasks(tasks.map(t => t.id === task.id ? {...t, done: !t.done} : t))} /><span className={task.done ? "task-done" : ""}>{task.title}</span></label><button onClick={() => setTasks(tasks.filter(t => t.id !== task.id))} aria-label="Delete task">×</button></div>)}</div></section>}
