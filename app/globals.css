@@ -67,3 +67,26 @@ footer{text-align:center;color:#4e5c70;font:8px 'DM Mono';letter-spacing:1.5px}f
 }
 @media(max-width:370px){.content{width:calc(100% - 20px)}.secure{display:none}.composer-foot>span:last-child{display:none}.quick-actions button span{font-size:8px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+
+
+.side-action{width:100%;border:0;background:transparent;text-align:left;font:inherit;cursor:pointer}
+.utility-card{margin:0 0 22px;border:1px solid rgba(143,169,204,.15);border-radius:12px;background:linear-gradient(145deg,rgba(17,25,40,.94),rgba(10,15,26,.96));padding:18px}
+.utility-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.utility-heading span{font:9px 'DM Mono';letter-spacing:1.5px;color:#7794a8}
+.utility-heading h2{font:600 20px Manrope;margin:5px 0 0;color:#eaf2fb}
+.utility-heading>b{font:9px 'DM Mono';letter-spacing:1px;color:#8dd7df;border:1px solid #5b9aa344;border-radius:20px;padding:7px 9px}
+.utility-form{display:flex;gap:8px;margin-bottom:12px}
+.utility-form input{min-width:0;flex:1;border:1px solid rgba(135,168,199,.2);border-radius:8px;background:#080e19;color:#eaf1fa;padding:11px 12px;font-size:12px;outline:none}
+.utility-form input:focus{border-color:#6ab7c5}
+.utility-form button{border:0;border-radius:8px;background:#b9e8ee;color:#10212a;padding:0 15px;font-size:11px;font-weight:700;white-space:nowrap}
+.utility-form button:disabled{opacity:.4;cursor:not-allowed}
+.task-list{display:grid;gap:7px}
+.task-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--line);border-radius:8px;padding:10px 11px;color:#c0ccdc;font-size:12px}
+.task-row label{display:flex;align-items:center;gap:9px;min-width:0;flex:1}
+.task-row label span,.memory-row>span{overflow-wrap:anywhere;line-height:1.5}
+.task-row input{accent-color:#83d4df}
+.task-row>button{border:0;background:transparent;color:#8194aa;font-size:18px;padding:0 3px}
+.task-done{text-decoration:line-through;color:#68788d}
+.empty-state,.memory-help{color:#8493a8;font-size:11px;line-height:1.6;margin:4px 0 10px}
+.memory-row{align-items:flex-start}
+@media(max-width:760px){.utility-card{padding:14px}.utility-heading h2{font-size:18px}.utility-form button{padding:0 11px}.task-row{font-size:11px}}
