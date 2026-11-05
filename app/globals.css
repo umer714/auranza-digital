@@ -99,3 +99,10 @@ footer{text-align:center;color:#4e5c70;font:8px 'DM Mono';letter-spacing:1.5px}f
 .source-list a{font-size:10px;line-height:1.45;color:#a8c8d7;text-decoration:none;overflow-wrap:anywhere}
 .source-list a:hover{text-decoration:underline;color:#d6f6fb}
 @media(max-width:760px){.composer-foot{gap:5px}.composer-foot button{font-size:8px}.composer-foot>span{font-size:7px}}
+
+
+/* Voice conversation controls */
+.composer-foot{flex-wrap:wrap}
+.language-select{border:1px solid rgba(135,168,199,.18);border-radius:6px;background:#0b1421;color:#9fc8d2;padding:6px 7px;font-size:9px;outline:none}
+.language-select:focus{border-color:#6ab7c5}
+@media(max-width:760px){.composer-foot{justify-content:flex-start;padding:5px 9px;min-height:42px}.composer-foot>span:last-child{margin-left:auto}.language-select{font-size:8px;padding:5px}}
