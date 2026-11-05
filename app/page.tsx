@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import CloudAccount from "@/components/CloudAccount";
+import CloudSync from "@/components/CloudSync";
 
 type Message = { role: "user" | "assistant"; content: string; sources?: { title: string; uri: string }[] };
 type Task = { id: number; title: string; done: boolean };
@@ -133,13 +134,32 @@ export default function Home() {
     window.speechSynthesis?.cancel(); setSpeaking(false);
   }
 
-  useEffect(() => { localStorage.setItem("jarvis-tasks-v1", JSON.stringify(tasks)); }, [tasks]);
-  useEffect(() => { localStorage.setItem("jarvis-memory-v1", JSON.stringify(memories)); }, [memories]);
+  useEffect(() => {
+    localStorage.setItem("jarvis-tasks-v1", JSON.stringify(tasks));
+    window.dispatchEvent(new CustomEvent("jarvis-local-data-changed"));
+  }, [tasks]);
+  useEffect(() => {
+    localStorage.setItem("jarvis-memory-v1", JSON.stringify(memories));
+    window.dispatchEvent(new CustomEvent("jarvis-local-data-changed"));
+  }, [memories]);
+  useEffect(() => {
+    const refreshFromCloud = () => {
+      try {
+        const nextTasks = JSON.parse(localStorage.getItem("jarvis-tasks-v1") || "[]") as Task[];
+        const nextMemories = JSON.parse(localStorage.getItem("jarvis-memory-v1") || "[]") as string[];
+        setTasks(current => JSON.stringify(current) === JSON.stringify(nextTasks) ? current : nextTasks);
+        setMemories(current => JSON.stringify(current) === JSON.stringify(nextMemories) ? current : nextMemories);
+      } catch {}
+    };
+    window.addEventListener("jarvis-cloud-sync-complete", refreshFromCloud);
+    return () => window.removeEventListener("jarvis-cloud-sync-complete", refreshFromCloud);
+  }, []);
   function addTask(e: React.FormEvent) { e.preventDefault(); const title = taskInput.trim(); if (!title) return; setTasks([...tasks, { id: Date.now(), title, done: false }]); setTaskInput(""); }
   function addMemory(e: React.FormEvent) { e.preventDefault(); const note = memoryInput.trim(); if (!note) return; setMemories([...memories, note]); setMemoryInput(""); }
   function newChat() { window.speechSynthesis?.cancel(); setMessages(starter); setNotice(""); }
   return (
     <main className="shell">
+      <CloudSync />
       <div className="ambient ambient-one" /><div className="ambient ambient-two" />
       <aside className="sidebar">
         <div className="brand"><div className="brand-mark">J</div><div><b>JARVIS</b><span>PERSONAL INTELLIGENCE</span></div></div>
