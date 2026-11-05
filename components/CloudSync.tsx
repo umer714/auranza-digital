@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
 type LocalTask = { id: number; title: string; done: boolean };
@@ -18,6 +18,7 @@ function uuid() { return crypto.randomUUID(); }
 
 export default function CloudSync() {
   const userId = useRef<string | null>(null);
+  const [status, setStatus] = useState<"checking" | "local" | "syncing" | "synced" | "error">("checking");
   const running = useRef(false);
   const syncAgain = useRef(false);
 
@@ -31,6 +32,7 @@ export default function CloudSync() {
 
     async function sync() {
       if (!alive || !userId.current) return;
+      setStatus("syncing");
       if (running.current) { syncAgain.current = true; return; }
       running.current = true;
       try {
@@ -93,8 +95,10 @@ export default function CloudSync() {
           const result = await db.from("jarvis_memories").upsert(payload, { onConflict: "id" });
           if (result.error) throw result.error;
         }
+        setStatus("synced");
         window.dispatchEvent(new CustomEvent("jarvis-cloud-sync-complete"));
       } catch (error) {
+        setStatus("error");
         console.error("JARVIS cloud sync:", error);
         window.dispatchEvent(new CustomEvent("jarvis-cloud-sync-error", {
           detail: error instanceof Error ? error.message : "Cloud sync failed"
@@ -112,10 +116,12 @@ export default function CloudSync() {
       if (!alive) return;
       userId.current = data.user?.id ?? null;
       if (userId.current) void sync();
+      else setStatus("local");
     });
     const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
       userId.current = session?.user?.id ?? null;
       if (userId.current) window.setTimeout(() => void sync(), 0);
+      else setStatus("local");
     });
     const onLocalChange = () => { if (userId.current) void sync(); };
     window.addEventListener("jarvis-local-data-changed", onLocalChange);
@@ -126,5 +132,6 @@ export default function CloudSync() {
     };
   }, []);
 
-  return null;
+  const labels = { checking: "Checking sync", local: "Device only", syncing: "Syncing…", synced: "Cloud synced", error: "Sync issue" };
+  return <div className={`sync-status sync-${status}`} role="status" aria-live="polite"><span />{labels[status]}</div>;
 }
