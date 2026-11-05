@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import PWAInstall from "@/components/PWAInstall";
 
 export const metadata: Metadata = {
   title: "JARVIS AI — Personal Intelligence",
@@ -14,5 +15,5 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="en"><body><PWAInstall />{children}</body></html>;
 }
