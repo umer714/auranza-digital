@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 type Message = { role: "user" | "assistant"; content: string };
+type Task = { id: number; title: string; done: boolean };
 type SpeechRecognitionLike = {
   lang: string; interimResults: boolean; continuous: boolean;
   onresult: ((event: { resultIndex: number; results: ArrayLike<ArrayLike<{ transcript: string }> & { isFinal: boolean }> }) => void) | null;
@@ -20,6 +21,11 @@ export default function Home() {
   const [speaking, setSpeaking] = useState(false);
   const [voiceOn, setVoiceOn] = useState(true);
   const [notice, setNotice] = useState("");
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [taskInput, setTaskInput] = useState("");
+  const [memories, setMemories] = useState<string[]>([]);
+  const [memoryInput, setMemoryInput] = useState("");
+  const [activeTool, setActiveTool] = useState<"tasks" | "memory" | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
 
@@ -27,6 +33,10 @@ export default function Home() {
     try {
       const saved = localStorage.getItem("jarvis-chat-v1");
       if (saved) setMessages(JSON.parse(saved));
+      const savedTasks = localStorage.getItem("jarvis-tasks-v1");
+      if (savedTasks) setTasks(JSON.parse(savedTasks));
+      const savedMemories = localStorage.getItem("jarvis-memory-v1");
+      if (savedMemories) setMemories(JSON.parse(savedMemories));
     } catch {}
   }, []);
   useEffect(() => {
@@ -84,6 +94,10 @@ export default function Home() {
     try { recognition.start(); setListening(true); setNotice(""); } catch { setNotice("Microphone start nahi ho saka."); }
   }
 
+  useEffect(() => { localStorage.setItem("jarvis-tasks-v1", JSON.stringify(tasks)); }, [tasks]);
+  useEffect(() => { localStorage.setItem("jarvis-memory-v1", JSON.stringify(memories)); }, [memories]);
+  function addTask(e: React.FormEvent) { e.preventDefault(); const title = taskInput.trim(); if (!title) return; setTasks([...tasks, { id: Date.now(), title, done: false }]); setTaskInput(""); }
+  function addMemory(e: React.FormEvent) { e.preventDefault(); const note = memoryInput.trim(); if (!note) return; setMemories([...memories, note]); setMemoryInput(""); }
   function newChat() { window.speechSynthesis?.cancel(); setMessages(starter); setNotice(""); }
   return (
     <main className="shell">
@@ -93,8 +107,8 @@ export default function Home() {
         <button className="new-chat" onClick={newChat}><span>＋</span> New conversation</button>
         <div className="side-label">WORKSPACE</div>
         <div className="side-item active"><span>◈</span> AI Assistant <i /></div>
-        <div className="side-item muted"><span>◷</span> Conversation memory</div>
-        <div className="side-item muted"><span>⌘</span> Tools <em>SOON</em></div>
+        <button className={`side-item side-action ${activeTool === "memory" ? "active" : ""}`} onClick={() => setActiveTool(activeTool === "memory" ? null : "memory")}><span>◷</span> Memory vault</button>
+        <button className={`side-item side-action ${activeTool === "tasks" ? "active" : ""}`} onClick={() => setActiveTool(activeTool === "tasks" ? null : "tasks")}><span>☷</span> My tasks</button>
         <div className="side-bottom"><div className="status-dot" /><div><b>JARVIS CORE</b><span>Interface online</span></div><span className="version">V 0.1</span></div>
       </aside>
 
@@ -125,7 +139,9 @@ export default function Home() {
             </form>
             <div className="composer-foot"><span>↵ ENTER TO SEND</span><button onClick={() => setVoiceOn(!voiceOn)}>{voiceOn ? "◖ Voice replies on" : "◖ Voice replies off"}</button><span>AI CAN MAKE MISTAKES</span></div>
           </div>
-          <div className="quick-actions"><button onClick={() => void send("Aaj ke liye ek productive plan bana do.")}>✳ <span>Plan my day</span></button><button onClick={() => void send("Mujhe ek naya skill seekhne ka roadmap do.")}>⌁ <span>Learn something</span></button><button onClick={() => void send("Meri madad karo: ek task list banao.")}>☷ <span>Organise tasks</span></button></div>
+          <div className="quick-actions"><button onClick={() => setActiveTool(activeTool === "tasks" ? null : "tasks")}>☷ <span>My tasks</span></button><button onClick={() => setActiveTool(activeTool === "memory" ? null : "memory")}>◷ <span>Memory vault</span></button><button onClick={() => void send("Mujhe aaj ka productive plan banane mein madad karo.")}>✳ <span>Plan my day</span></button></div>
+          {activeTool === "tasks" && <section className="utility-card"><div className="utility-heading"><div><span>PERSONAL WORKSPACE</span><h2>My tasks</h2></div><b>{tasks.filter(t => !t.done).length} OPEN</b></div><form className="utility-form" onSubmit={addTask}><input value={taskInput} onChange={e => setTaskInput(e.target.value)} placeholder="Add a task..." aria-label="New task" /><button disabled={!taskInput.trim()}>Add task</button></form><div className="task-list">{tasks.length === 0 ? <p className="empty-state">Abhi koi task nahi. Apna pehla task add karein.</p> : tasks.map(task => <div className="task-row" key={task.id}><label><input type="checkbox" checked={task.done} onChange={() => setTasks(tasks.map(t => t.id === task.id ? {...t, done: !t.done} : t))} /><span className={task.done ? "task-done" : ""}>{task.title}</span></label><button onClick={() => setTasks(tasks.filter(t => t.id !== task.id))} aria-label="Delete task">×</button></div>)}</div></section>}
+          {activeTool === "memory" && <section className="utility-card"><div className="utility-heading"><div><span>ON THIS DEVICE</span><h2>Memory vault</h2></div><b>{memories.length} SAVED</b></div><p className="memory-help">Yahan apni preferences, goals ya zaroori notes save karein. Ye filhaal isi browser/device mein rehte hain.</p><form className="utility-form" onSubmit={addMemory}><input value={memoryInput} onChange={e => setMemoryInput(e.target.value)} placeholder="Save a note or preference..." aria-label="Memory note" /><button disabled={!memoryInput.trim()}>Save</button></form><div className="task-list">{memories.length === 0 ? <p className="empty-state">Abhi koi memory save nahi hui.</p> : memories.map((note, i) => <div className="task-row memory-row" key={i}><span>{note}</span><button onClick={() => setMemories(memories.filter((_, index) => index !== i))} aria-label="Delete memory">×</button></div>)}</div></section>}
           <footer>JARVIS AI <span>•</span> BUILT TO ASSIST, DESIGNED TO EVOLVE</footer>
         </div>
       </section>
