@@ -19,6 +19,7 @@ function uuid() { return crypto.randomUUID(); }
 export default function CloudSync() {
   const userId = useRef<string | null>(null);
   const running = useRef(false);
+  const syncAgain = useRef(false);
 
   useEffect(() => {
     let alive = true;
@@ -29,7 +30,8 @@ export default function CloudSync() {
     const db = supabase as any;
 
     async function sync() {
-      if (!alive || !userId.current || running.current) return;
+      if (!alive || !userId.current) return;
+      if (running.current) { syncAgain.current = true; return; }
       running.current = true;
       try {
         const uid = userId.current;
@@ -99,6 +101,10 @@ export default function CloudSync() {
         }));
       } finally {
         running.current = false;
+        if (alive && syncAgain.current) {
+          syncAgain.current = false;
+          window.setTimeout(() => void sync(), 0);
+        }
       }
     }
 
