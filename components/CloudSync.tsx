@@ -26,14 +26,16 @@ export default function CloudSync() {
     try { supabase = getSupabaseBrowserClient(); }
     catch { return; }
 
+    const db = supabase as any;
+
     async function sync() {
       if (!alive || !userId.current || running.current) return;
       running.current = true;
       try {
         const uid = userId.current;
         const [remoteTasks, remoteMemories] = await Promise.all([
-          supabase.from("jarvis_tasks").select("id,title,details,completed,due_at").eq("user_id", uid),
-          supabase.from("jarvis_memories").select("id,title,content,category").eq("user_id", uid)
+          db.from("jarvis_tasks").select("id,title,details,completed,due_at").eq("user_id", uid),
+          db.from("jarvis_memories").select("id,title,content,category").eq("user_id", uid)
         ]);
         if (remoteTasks.error) throw remoteTasks.error;
         if (remoteMemories.error) throw remoteMemories.error;
