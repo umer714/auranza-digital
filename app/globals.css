@@ -121,3 +121,12 @@ footer{text-align:center;color:#4e5c70;font:8px 'DM Mono';letter-spacing:1.5px}f
 .account-submit{border:0;border-radius:7px;background:#b9e8ee;color:#10212a;padding:11px;font-size:11px;font-weight:700}.account-submit:disabled{opacity:.5}
 .account-message{font-size:10px;line-height:1.6;color:#f0c58c;overflow-wrap:anywhere}.account-switch,.account-close{display:block;border:0;background:none;color:#8ecbd5;font-size:10px;padding:9px 0 0}.account-close{color:#73849a}
 @media(max-width:760px){.account-trigger{font-size:9px;padding:8px}.cloud-account{gap:6px;padding:5px}.cloud-email{max-width:82px}.cloud-label{display:none}.cloud-account button{padding:6px;font-size:9px}.account-popover{position:fixed;top:66px;right:12px}}
+
+
+/* Cloud sync health indicator */
+.sync-status{position:fixed;right:16px;bottom:14px;z-index:30;display:flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid var(--line);border-radius:20px;background:rgba(9,15,25,.92);backdrop-filter:blur(12px);color:#9aabc0;font:9px 'DM Mono';letter-spacing:.35px;box-shadow:0 8px 28px #0005}
+.sync-status>span{width:6px;height:6px;border-radius:50%;background:#8794a6}
+.sync-synced{color:#9bdcc7}.sync-synced>span{background:#73d9ba;box-shadow:0 0 8px #73d9ba}
+.sync-syncing>span{background:#79d9e8;animation:breathe .8s infinite alternate}
+.sync-error{color:#f0b7a7}.sync-error>span{background:#e78c78}
+@media(max-width:760px){.sync-status{right:10px;bottom:9px;font-size:8px;padding:7px 9px}}
