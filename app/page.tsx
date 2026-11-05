@@ -20,6 +20,9 @@ export default function Home() {
   const [listening, setListening] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const [voiceOn, setVoiceOn] = useState(true);
+  const [voiceMode, setVoiceMode] = useState(false);
+  const [speechLang, setSpeechLang] = useState("ur-PK");
+  const voiceModeRef = useRef(false);
   const [webSearch, setWebSearch] = useState(false);
   const [notice, setNotice] = useState("");
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -49,7 +52,7 @@ export default function Home() {
     if (!voiceOn || !("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "ur-PK";
+    utterance.lang = speechLang;
     utterance.rate = 0.94;
     const voices = window.speechSynthesis.getVoices();
     const urdu = voices.find(v => /ur[-_]PK/i.test(v.lang)) || voices.find(v => /^ur/i.test(v.lang));
@@ -57,8 +60,8 @@ export default function Home() {
     if (urdu) utterance.voice = urdu;
     else if (female) utterance.voice = female;
     utterance.onstart = () => setSpeaking(true);
-    utterance.onend = () => setSpeaking(false);
-    utterance.onerror = () => setSpeaking(false);
+    utterance.onend = () => { setSpeaking(false); if (voiceModeRef.current) window.setTimeout(() => startListening(), 350); };
+    utterance.onerror = () => { setSpeaking(false); if (voiceModeRef.current) window.setTimeout(() => startListening(), 700); };
     window.speechSynthesis.speak(utterance);
   }
 
@@ -79,12 +82,30 @@ export default function Home() {
     } finally { setBusy(false); }
   }
 
+  function startListening() {
+    if (!voiceModeRef.current && !voiceMode) return;
+    const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!Speech) { setVoiceMode(false); voiceModeRef.current = false; setNotice("Is browser mein voice input supported nahi. Android Chrome ya desktop Chrome try karein."); return; }
+    if (listening || busy || speaking) return;
+    const recognition = new Speech();
+    recognition.lang = speechLang; recognition.interimResults = false; recognition.continuous = false;
+    recognition.onresult = event => {
+      const transcript = event.results[event.resultIndex]?.[0]?.transcript || "";
+      if (transcript) { setInput(transcript); void send(transcript); }
+    };
+    recognition.onerror = () => { setListening(false); if (voiceModeRef.current) setNotice("Mic permission ya connection check karein. Voice mode ko dobara start karein."); };
+    recognition.onend = () => setListening(false);
+    recognitionRef.current = recognition;
+    try { recognition.start(); setListening(true); setNotice(""); } catch { setListening(false); setNotice("Microphone start nahi ho saka."); }
+  }
+
   function toggleMic() {
     if (listening) { recognitionRef.current?.stop(); setListening(false); return; }
+    voiceModeRef.current = false; setVoiceMode(false);
     const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!Speech) { setNotice("Is browser mein voice input supported nahi. Android Chrome ya desktop Chrome try karein."); return; }
     const recognition = new Speech();
-    recognition.lang = "ur-PK"; recognition.interimResults = false; recognition.continuous = false;
+    recognition.lang = speechLang; recognition.interimResults = false; recognition.continuous = false;
     recognition.onresult = event => {
       const transcript = event.results[event.resultIndex]?.[0]?.transcript || "";
       if (transcript) { setInput(transcript); void send(transcript); }
@@ -93,6 +114,22 @@ export default function Home() {
     recognition.onend = () => setListening(false);
     recognitionRef.current = recognition;
     try { recognition.start(); setListening(true); setNotice(""); } catch { setNotice("Microphone start nahi ho saka."); }
+  }
+
+  function toggleVoiceMode() {
+    if (voiceModeRef.current) {
+      voiceModeRef.current = false; setVoiceMode(false);
+      recognitionRef.current?.stop(); setListening(false);
+      window.speechSynthesis?.cancel(); setSpeaking(false);
+      return;
+    }
+    voiceModeRef.current = true; setVoiceMode(true);
+    setVoiceOn(true); setNotice("Voice conversation active hai. Baat khatam karne ke liye Stop voice dabayein.");
+    window.setTimeout(() => startListening(), 100);
+  }
+
+  function stopSpeaking() {
+    window.speechSynthesis?.cancel(); setSpeaking(false);
   }
 
   useEffect(() => { localStorage.setItem("jarvis-tasks-v1", JSON.stringify(tasks)); }, [tasks]);
@@ -135,10 +172,10 @@ export default function Home() {
             {notice && <div className="notice">{notice}</div>}
             <form className="composer" onSubmit={e => { e.preventDefault(); void send(); }}>
               <input value={input} onChange={e => setInput(e.target.value)} placeholder="Message JARVIS in Urdu, Roman Urdu or English..." aria-label="Message JARVIS" />
-              <button type="button" className={`mic-btn ${listening ? "recording" : ""}`} onClick={toggleMic} aria-label="Voice input"> {listening ? "■" : "♩"} </button>
+              <button type="button" className={`mic-btn ${listening ? "recording" : ""}`} onClick={toggleMic} aria-label="Voice input" title="Single voice message"> {listening ? "■" : "♩"} </button>
               <button type="submit" className="send-btn" disabled={!input.trim() || busy}>↑</button>
             </form>
-            <div className="composer-foot"><button type="button" className={`search-toggle ${webSearch ? "enabled" : ""}`} onClick={() => setWebSearch(!webSearch)} title="Allow JARVIS to search Google for this answer">⌕ {webSearch ? "Web search on" : "Web search off"}</button><button type="button" onClick={() => setVoiceOn(!voiceOn)}>{voiceOn ? "◖ Voice replies on" : "◖ Voice replies off"}</button><span>↵ ENTER TO SEND</span></div>
+            <div className="composer-foot"><button type="button" className={`search-toggle ${webSearch ? "enabled" : ""}`} onClick={() => setWebSearch(!webSearch)} title="Allow JARVIS to search Google for this answer">⌕ {webSearch ? "Web search on" : "Web search off"}</button><button type="button" className={`search-toggle ${voiceMode ? "enabled" : ""}`} onClick={toggleVoiceMode}>{voiceMode ? "■ Stop voice" : "◉ Voice conversation"}</button><select className="language-select" aria-label="Voice language" value={speechLang} onChange={e => setSpeechLang(e.target.value)}><option value="ur-PK">Urdu</option><option value="en-US">English</option></select><button type="button" onClick={() => setVoiceOn(!voiceOn)}>{voiceOn ? "◖ Replies on" : "◖ Replies off"}</button>{speaking && <button type="button" onClick={stopSpeaking}>Stop audio</button>}</div>
           </div>
           <div className="quick-actions"><button onClick={() => setActiveTool(activeTool === "tasks" ? null : "tasks")}>☷ <span>My tasks</span></button><button onClick={() => setActiveTool(activeTool === "memory" ? null : "memory")}>◷ <span>Memory vault</span></button><button onClick={() => void send("Mujhe aaj ka productive plan banane mein madad karo.")}>✳ <span>Plan my day</span></button></div>
           {activeTool === "tasks" && <section className="utility-card"><div className="utility-heading"><div><span>PERSONAL WORKSPACE</span><h2>My tasks</h2></div><b>{tasks.filter(t => !t.done).length} OPEN</b></div><form className="utility-form" onSubmit={addTask}><input value={taskInput} onChange={e => setTaskInput(e.target.value)} placeholder="Add a task..." aria-label="New task" /><button disabled={!taskInput.trim()}>Add task</button></form><div className="task-list">{tasks.length === 0 ? <p className="empty-state">Abhi koi task nahi. Apna pehla task add karein.</p> : tasks.map(task => <div className="task-row" key={task.id}><label><input type="checkbox" checked={task.done} onChange={() => setTasks(tasks.map(t => t.id === task.id ? {...t, done: !t.done} : t))} /><span className={task.done ? "task-done" : ""}>{task.title}</span></label><button onClick={() => setTasks(tasks.filter(t => t.id !== task.id))} aria-label="Delete task">×</button></div>)}</div></section>}
