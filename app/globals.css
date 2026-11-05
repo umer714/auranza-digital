@@ -90,3 +90,12 @@ footer{text-align:center;color:#4e5c70;font:8px 'DM Mono';letter-spacing:1.5px}f
 .empty-state,.memory-help{color:#8493a8;font-size:11px;line-height:1.6;margin:4px 0 10px}
 .memory-row{align-items:flex-start}
 @media(max-width:760px){.utility-card{padding:14px}.utility-heading h2{font-size:18px}.utility-form button{padding:0 11px}.task-row{font-size:11px}}
+
+
+.search-toggle{border:1px solid transparent!important;border-radius:6px!important}
+.search-toggle.enabled{background:rgba(83,170,190,.13)!important;border-color:rgba(121,217,232,.28)!important;color:#a8e8ef!important}
+.source-list{display:grid;gap:5px;margin-top:10px;padding:9px 11px;border-left:2px solid #5ba6b7;background:#0b1724;border-radius:0 7px 7px 0}
+.source-list>span{font:8px 'DM Mono';letter-spacing:1.4px;color:#79bdca}
+.source-list a{font-size:10px;line-height:1.45;color:#a8c8d7;text-decoration:none;overflow-wrap:anywhere}
+.source-list a:hover{text-decoration:underline;color:#d6f6fb}
+@media(max-width:760px){.composer-foot{gap:5px}.composer-foot button{font-size:8px}.composer-foot>span{font-size:7px}}
