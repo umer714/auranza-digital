@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type Message = { role: "user" | "assistant"; content: string };
+type Message = { role: "user" | "assistant"; content: string; sources?: { title: string; uri: string }[] };
 type Task = { id: number; title: string; done: boolean };
 type SpeechRecognitionLike = {
   lang: string; interimResults: boolean; continuous: boolean;
@@ -72,7 +72,7 @@ export default function Home() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Response nahi mil saka.");
       const answer = String(data.reply || "Mujhe jawab nahi mila.");
-      setMessages([...next, { role: "assistant", content: answer }]);
+      setMessages([...next, { role: "assistant", content: answer, sources: Array.isArray(data.sources) ? data.sources : [] }]);
       speak(answer);
     } catch (error) {
       setNotice(error instanceof Error ? error.message : "Connection error.");
@@ -128,7 +128,7 @@ export default function Home() {
           <div className="chat-card">
             <div className="chat-head"><div><span className="chat-indicator" /> <b>Conversation</b><small> · End-to-end session UI</small></div><button onClick={newChat}>Clear chat ↗</button></div>
             <div className="messages">
-              {messages.map((m, i) => <div className={`message-row ${m.role}`} key={i}><div className="message-avatar">{m.role === "assistant" ? "J" : "U"}</div><div className="message-body"><div className="message-name">{m.role === "assistant" ? "JARVIS" : "YOU"} <span>{m.role === "assistant" ? "AI ASSISTANT" : "MESSAGE"}</span></div><p>{m.content}</p>{m.role === "assistant" && i > 0 && <button className="replay" onClick={() => speak(m.content)}>▶ Listen</button>}</div></div>)}
+              {messages.map((m, i) => <div className={`message-row ${m.role}`} key={i}><div className="message-avatar">{m.role === "assistant" ? "J" : "U"}</div><div className="message-body"><div className="message-name">{m.role === "assistant" ? "JARVIS" : "YOU"} <span>{m.role === "assistant" ? "AI ASSISTANT" : "MESSAGE"}</span></div><p>{m.content}</p>{m.role === "assistant" && m.sources && m.sources.length > 0 && <div className="source-list"><span>WEB SOURCES</span>{m.sources.map((source, index) => <a key={index} href={source.uri} target="_blank" rel="noreferrer">{source.title}</a>)}</div>}{m.role === "assistant" && i > 0 && <button className="replay" onClick={() => speak(m.content)}>▶ Listen</button>}</div></div>)}
               {busy && <div className="typing"><span /><span /><span /> <small>JARVIS is thinking</small></div>}
               <div ref={bottomRef} />
             </div>
